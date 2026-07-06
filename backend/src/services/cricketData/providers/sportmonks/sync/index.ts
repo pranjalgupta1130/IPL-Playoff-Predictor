@@ -1,0 +1,2 @@
+export { sportmonksSyncFixtures } from "./sportmonksSyncFixtures";
+

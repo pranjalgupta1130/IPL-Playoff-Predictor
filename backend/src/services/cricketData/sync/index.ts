@@ -1,0 +1,2 @@
+export { syncFixturesToMongo } from "./syncFixturesToMongo";
+

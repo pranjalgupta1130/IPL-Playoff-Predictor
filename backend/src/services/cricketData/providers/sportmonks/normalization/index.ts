@@ -1,0 +1,2 @@
+export { normalizeSportmonksFixturesToMatches } from "./normalizeSportmonksFixtures";
+

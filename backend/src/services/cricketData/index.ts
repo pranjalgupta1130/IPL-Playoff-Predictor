@@ -1,0 +1,3 @@
+export { syncFixturesToMongo } from "./sync";
+
+

@@ -1,0 +1,1852 @@
+[
+  {
+    "fixtureId": "IPL2026-FINAL",
+    "matchNumber": null,
+    "stage": "final",
+    "venue": "Narendra Modi Stadium, Ahmedabad",
+    "dateTimeText": "MAY, SUN 31 , 7:30 pm IST",
+    "teamA": "Royal Challengers Bengaluru",
+    "teamB": "Gujarat Titans",
+    "innings": [
+      {
+        "team": "Royal Challengers Bengaluru",
+        "runs": 161,
+        "wickets": 5,
+        "overs": "18.0"
+      },
+      {
+        "team": "Gujarat Titans",
+        "runs": 155,
+        "wickets": 8,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Royal Challengers Bengaluru Won by 5 Wickets (Winners)",
+    "winner": "Royal Challengers Bengaluru"
+  },
+  {
+    "fixtureId": "IPL2026-QUALIFIER2",
+    "matchNumber": null,
+    "stage": "qualifier2",
+    "venue": "New International Cricket Stadium, New Chandigarh",
+    "dateTimeText": "MAY, FRI 29 , 7:30 pm IST",
+    "teamA": "Gujarat Titans",
+    "teamB": "Rajasthan Royals",
+    "innings": [
+      {
+        "team": "Gujarat Titans",
+        "runs": 219,
+        "wickets": 3,
+        "overs": "18.4"
+      },
+      {
+        "team": "Rajasthan Royals",
+        "runs": 214,
+        "wickets": 6,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Gujarat Titans Won by 7 Wickets (Qualified)",
+    "winner": "Gujarat Titans"
+  },
+  {
+    "fixtureId": "IPL2026-ELIMINATOR",
+    "matchNumber": null,
+    "stage": "eliminator",
+    "venue": "New International Cricket Stadium, New Chandigarh",
+    "dateTimeText": "MAY, WED 27 , 7:30 pm IST",
+    "teamA": "Sunrisers Hyderabad",
+    "teamB": "Rajasthan Royals",
+    "innings": [
+      {
+        "team": "Sunrisers Hyderabad",
+        "runs": 196,
+        "wickets": 10,
+        "overs": "19.2"
+      },
+      {
+        "team": "Rajasthan Royals",
+        "runs": 243,
+        "wickets": 8,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Rajasthan Royals Won by 47 Runs (Qualified)",
+    "winner": "Rajasthan Royals"
+  },
+  {
+    "fixtureId": "IPL2026-QUALIFIER1",
+    "matchNumber": null,
+    "stage": "qualifier1",
+    "venue": "Himachal Pradesh Cricket Association Stadium, Dharamshala",
+    "dateTimeText": "MAY, TUE 26 , 7:30 pm IST",
+    "teamA": "Royal Challengers Bengaluru",
+    "teamB": "Gujarat Titans",
+    "innings": [
+      {
+        "team": "Royal Challengers Bengaluru",
+        "runs": 254,
+        "wickets": 5,
+        "overs": "20.0"
+      },
+      {
+        "team": "Gujarat Titans",
+        "runs": 162,
+        "wickets": 10,
+        "overs": "19.3"
+      }
+    ],
+    "result": "Royal Challengers Bengaluru Won by 92 Runs (Qualified)",
+    "winner": "Royal Challengers Bengaluru"
+  },
+  {
+    "fixtureId": "IPL2026-070",
+    "matchNumber": 70,
+    "stage": "league",
+    "venue": "Eden Gardens, Kolkata",
+    "dateTimeText": "MAY, SUN 24 , 7:30 pm IST",
+    "teamA": "Kolkata Knight Riders",
+    "teamB": "Delhi Capitals",
+    "innings": [
+      {
+        "team": "Kolkata Knight Riders",
+        "runs": 163,
+        "wickets": 10,
+        "overs": "18.4"
+      },
+      {
+        "team": "Delhi Capitals",
+        "runs": 203,
+        "wickets": 5,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Delhi Capitals Won by 40 Runs",
+    "winner": "Delhi Capitals"
+  },
+  {
+    "fixtureId": "IPL2026-069",
+    "matchNumber": 69,
+    "stage": "league",
+    "venue": "Wankhede Stadium, Mumbai",
+    "dateTimeText": "MAY, SUN 24 , 3:30 pm IST",
+    "teamA": "Mumbai Indians",
+    "teamB": "Rajasthan Royals",
+    "innings": [
+      {
+        "team": "Mumbai Indians",
+        "runs": 175,
+        "wickets": 9,
+        "overs": "20.0"
+      },
+      {
+        "team": "Rajasthan Royals",
+        "runs": 205,
+        "wickets": 8,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Rajasthan Royals Won by 30 Runs",
+    "winner": "Rajasthan Royals"
+  },
+  {
+    "fixtureId": "IPL2026-068",
+    "matchNumber": 68,
+    "stage": "league",
+    "venue": "Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium, Lucknow",
+    "dateTimeText": "MAY, SAT 23 , 7:30 pm IST",
+    "teamA": "Lucknow Super Giants",
+    "teamB": "Punjab Kings",
+    "innings": [
+      {
+        "team": "Lucknow Super Giants",
+        "runs": 196,
+        "wickets": 6,
+        "overs": "20.0"
+      },
+      {
+        "team": "Punjab Kings",
+        "runs": 200,
+        "wickets": 3,
+        "overs": "18.0"
+      }
+    ],
+    "result": "Punjab Kings Won by 7 Wickets",
+    "winner": "Punjab Kings"
+  },
+  {
+    "fixtureId": "IPL2026-067",
+    "matchNumber": 67,
+    "stage": "league",
+    "venue": "Rajiv Gandhi International Stadium, Hyderabad",
+    "dateTimeText": "MAY, FRI 22 , 7:30 pm IST",
+    "teamA": "Sunrisers Hyderabad",
+    "teamB": "Royal Challengers Bengaluru",
+    "innings": [
+      {
+        "team": "Sunrisers Hyderabad",
+        "runs": 255,
+        "wickets": 4,
+        "overs": "20.0"
+      },
+      {
+        "team": "Royal Challengers Bengaluru",
+        "runs": 200,
+        "wickets": 4,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Sunrisers Hyderabad Won by 55 Runs",
+    "winner": "Sunrisers Hyderabad"
+  },
+  {
+    "fixtureId": "IPL2026-066",
+    "matchNumber": 66,
+    "stage": "league",
+    "venue": "Narendra Modi Stadium, Ahmedabad",
+    "dateTimeText": "MAY, THU 21 , 7:30 pm IST",
+    "teamA": "Gujarat Titans",
+    "teamB": "Chennai Super Kings",
+    "innings": [
+      {
+        "team": "Gujarat Titans",
+        "runs": 229,
+        "wickets": 4,
+        "overs": "20.0"
+      },
+      {
+        "team": "Chennai Super Kings",
+        "runs": 140,
+        "wickets": 10,
+        "overs": "13.4"
+      }
+    ],
+    "result": "Gujarat Titans Won by 89 Runs",
+    "winner": "Gujarat Titans"
+  },
+  {
+    "fixtureId": "IPL2026-065",
+    "matchNumber": 65,
+    "stage": "league",
+    "venue": "Eden Gardens, Kolkata",
+    "dateTimeText": "MAY, WED 20 , 7:30 pm IST",
+    "teamA": "Kolkata Knight Riders",
+    "teamB": "Mumbai Indians",
+    "innings": [
+      {
+        "team": "Kolkata Knight Riders",
+        "runs": 148,
+        "wickets": 6,
+        "overs": "18.5"
+      },
+      {
+        "team": "Mumbai Indians",
+        "runs": 147,
+        "wickets": 8,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Kolkata Knight Riders Won by 4 Wickets",
+    "winner": "Kolkata Knight Riders"
+  },
+  {
+    "fixtureId": "IPL2026-064",
+    "matchNumber": 64,
+    "stage": "league",
+    "venue": "Sawai Mansingh Stadium, Jaipur",
+    "dateTimeText": "MAY, TUE 19 , 7:30 pm IST",
+    "teamA": "Rajasthan Royals",
+    "teamB": "Lucknow Super Giants",
+    "innings": [
+      {
+        "team": "Rajasthan Royals",
+        "runs": 225,
+        "wickets": 3,
+        "overs": "19.1"
+      },
+      {
+        "team": "Lucknow Super Giants",
+        "runs": 220,
+        "wickets": 5,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Rajasthan Royals Won by 7 Wickets",
+    "winner": "Rajasthan Royals"
+  },
+  {
+    "fixtureId": "IPL2026-063",
+    "matchNumber": 63,
+    "stage": "league",
+    "venue": "MA Chidambaram Stadium, Chennai",
+    "dateTimeText": "MAY, MON 18 , 7:30 pm IST",
+    "teamA": "Chennai Super Kings",
+    "teamB": "Sunrisers Hyderabad",
+    "innings": [
+      {
+        "team": "Chennai Super Kings",
+        "runs": 180,
+        "wickets": 7,
+        "overs": "20.0"
+      },
+      {
+        "team": "Sunrisers Hyderabad",
+        "runs": 181,
+        "wickets": 5,
+        "overs": "19.0"
+      }
+    ],
+    "result": "Sunrisers Hyderabad Won by 5 Wickets",
+    "winner": "Sunrisers Hyderabad"
+  },
+  {
+    "fixtureId": "IPL2026-062",
+    "matchNumber": 62,
+    "stage": "league",
+    "venue": "Arun Jaitley Stadium, Delhi",
+    "dateTimeText": "MAY, SUN 17 , 7:30 pm IST",
+    "teamA": "Delhi Capitals",
+    "teamB": "Rajasthan Royals",
+    "innings": [
+      {
+        "team": "Delhi Capitals",
+        "runs": 197,
+        "wickets": 5,
+        "overs": "19.2"
+      },
+      {
+        "team": "Rajasthan Royals",
+        "runs": 193,
+        "wickets": 8,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Delhi Capitals Won by 5 Wickets",
+    "winner": "Delhi Capitals"
+  },
+  {
+    "fixtureId": "IPL2026-061",
+    "matchNumber": 61,
+    "stage": "league",
+    "venue": "Himachal Pradesh Cricket Association Stadium, Dharamshala",
+    "dateTimeText": "MAY, SUN 17 , 3:30 pm IST",
+    "teamA": "Punjab Kings",
+    "teamB": "Royal Challengers Bengaluru",
+    "innings": [
+      {
+        "team": "Punjab Kings",
+        "runs": 199,
+        "wickets": 8,
+        "overs": "20.0"
+      },
+      {
+        "team": "Royal Challengers Bengaluru",
+        "runs": 222,
+        "wickets": 4,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Royal Challengers Bengaluru Won by 23 Runs",
+    "winner": "Royal Challengers Bengaluru"
+  },
+  {
+    "fixtureId": "IPL2026-060",
+    "matchNumber": 60,
+    "stage": "league",
+    "venue": "Eden Gardens, Kolkata",
+    "dateTimeText": "MAY, SAT 16 , 7:30 pm IST",
+    "teamA": "Kolkata Knight Riders",
+    "teamB": "Gujarat Titans",
+    "innings": [
+      {
+        "team": "Kolkata Knight Riders",
+        "runs": 247,
+        "wickets": 2,
+        "overs": "20.0"
+      },
+      {
+        "team": "Gujarat Titans",
+        "runs": 218,
+        "wickets": 4,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Kolkata Knight Riders Won by 29 Runs",
+    "winner": "Kolkata Knight Riders"
+  },
+  {
+    "fixtureId": "IPL2026-059",
+    "matchNumber": 59,
+    "stage": "league",
+    "venue": "Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium, Lucknow",
+    "dateTimeText": "MAY, FRI 15 , 7:30 pm IST",
+    "teamA": "Lucknow Super Giants",
+    "teamB": "Chennai Super Kings",
+    "innings": [
+      {
+        "team": "Lucknow Super Giants",
+        "runs": 188,
+        "wickets": 3,
+        "overs": "16.4"
+      },
+      {
+        "team": "Chennai Super Kings",
+        "runs": 187,
+        "wickets": 5,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Lucknow Super Giants Won by 7 Wickets",
+    "winner": "Lucknow Super Giants"
+  },
+  {
+    "fixtureId": "IPL2026-058",
+    "matchNumber": 58,
+    "stage": "league",
+    "venue": "Himachal Pradesh Cricket Association Stadium, Dharamshala",
+    "dateTimeText": "MAY, THU 14 , 7:30 pm IST",
+    "teamA": "Punjab Kings",
+    "teamB": "Mumbai Indians",
+    "innings": [
+      {
+        "team": "Punjab Kings",
+        "runs": 200,
+        "wickets": 8,
+        "overs": "20.0"
+      },
+      {
+        "team": "Mumbai Indians",
+        "runs": 205,
+        "wickets": 4,
+        "overs": "19.5"
+      }
+    ],
+    "result": "Mumbai Indians Won by 6 Wickets",
+    "winner": "Mumbai Indians"
+  },
+  {
+    "fixtureId": "IPL2026-057",
+    "matchNumber": 57,
+    "stage": "league",
+    "venue": "Shaheed Veer Narayan Singh International Cricket Stadium, Raipur",
+    "dateTimeText": "MAY, WED 13 , 7:30 pm IST",
+    "teamA": "Royal Challengers Bengaluru",
+    "teamB": "Kolkata Knight Riders",
+    "innings": [
+      {
+        "team": "Royal Challengers Bengaluru",
+        "runs": 194,
+        "wickets": 4,
+        "overs": "19.1"
+      },
+      {
+        "team": "Kolkata Knight Riders",
+        "runs": 192,
+        "wickets": 4,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Royal Challengers Bengaluru Won by 6 Wickets",
+    "winner": "Royal Challengers Bengaluru"
+  },
+  {
+    "fixtureId": "IPL2026-056",
+    "matchNumber": 56,
+    "stage": "league",
+    "venue": "Narendra Modi Stadium, Ahmedabad",
+    "dateTimeText": "MAY, TUE 12 , 7:30 pm IST",
+    "teamA": "Gujarat Titans",
+    "teamB": "Sunrisers Hyderabad",
+    "innings": [
+      {
+        "team": "Gujarat Titans",
+        "runs": 168,
+        "wickets": 5,
+        "overs": "20.0"
+      },
+      {
+        "team": "Sunrisers Hyderabad",
+        "runs": 86,
+        "wickets": 10,
+        "overs": "14.5"
+      }
+    ],
+    "result": "Gujarat Titans Won by 82 Runs",
+    "winner": "Gujarat Titans"
+  },
+  {
+    "fixtureId": "IPL2026-055",
+    "matchNumber": 55,
+    "stage": "league",
+    "venue": "Himachal Pradesh Cricket Association Stadium, Dharamshala",
+    "dateTimeText": "MAY, MON 11 , 7:30 pm IST",
+    "teamA": "Punjab Kings",
+    "teamB": "Delhi Capitals",
+    "innings": [
+      {
+        "team": "Punjab Kings",
+        "runs": 210,
+        "wickets": 5,
+        "overs": "20.0"
+      },
+      {
+        "team": "Delhi Capitals",
+        "runs": 216,
+        "wickets": 7,
+        "overs": "19.0"
+      }
+    ],
+    "result": "Delhi Capitals Won by 3 Wickets",
+    "winner": "Delhi Capitals"
+  },
+  {
+    "fixtureId": "IPL2026-054",
+    "matchNumber": 54,
+    "stage": "league",
+    "venue": "Shaheed Veer Narayan Singh International Cricket Stadium, Raipur",
+    "dateTimeText": "MAY, SUN 10 , 7:30 pm IST",
+    "teamA": "Royal Challengers Bengaluru",
+    "teamB": "Mumbai Indians",
+    "innings": [
+      {
+        "team": "Royal Challengers Bengaluru",
+        "runs": 167,
+        "wickets": 8,
+        "overs": "20.0"
+      },
+      {
+        "team": "Mumbai Indians",
+        "runs": 166,
+        "wickets": 7,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Royal Challengers Bengaluru Won by 2 Wickets",
+    "winner": "Royal Challengers Bengaluru"
+  },
+  {
+    "fixtureId": "IPL2026-053",
+    "matchNumber": 53,
+    "stage": "league",
+    "venue": "MA Chidambaram Stadium, Chennai",
+    "dateTimeText": "MAY, SUN 10 , 3:30 pm IST",
+    "teamA": "Chennai Super Kings",
+    "teamB": "Lucknow Super Giants",
+    "innings": [
+      {
+        "team": "Chennai Super Kings",
+        "runs": 208,
+        "wickets": 5,
+        "overs": "19.2"
+      },
+      {
+        "team": "Lucknow Super Giants",
+        "runs": 203,
+        "wickets": 8,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Chennai Super Kings Won by 5 Wickets",
+    "winner": "Chennai Super Kings"
+  },
+  {
+    "fixtureId": "IPL2026-052",
+    "matchNumber": 52,
+    "stage": "league",
+    "venue": "Sawai Mansingh Stadium, Jaipur",
+    "dateTimeText": "MAY, SAT 9 , 7:30 pm IST",
+    "teamA": "Rajasthan Royals",
+    "teamB": "Gujarat Titans",
+    "innings": [
+      {
+        "team": "Rajasthan Royals",
+        "runs": 152,
+        "wickets": 10,
+        "overs": "16.3"
+      },
+      {
+        "team": "Gujarat Titans",
+        "runs": 229,
+        "wickets": 4,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Gujarat Titans Won by 77 Runs",
+    "winner": "Gujarat Titans"
+  },
+  {
+    "fixtureId": "IPL2026-051",
+    "matchNumber": 51,
+    "stage": "league",
+    "venue": "Arun Jaitley Stadium, Delhi",
+    "dateTimeText": "MAY, FRI 8 , 7:30 pm IST",
+    "teamA": "Delhi Capitals",
+    "teamB": "Kolkata Knight Riders",
+    "innings": [
+      {
+        "team": "Delhi Capitals",
+        "runs": 142,
+        "wickets": 8,
+        "overs": "20.0"
+      },
+      {
+        "team": "Kolkata Knight Riders",
+        "runs": 147,
+        "wickets": 2,
+        "overs": "14.2"
+      }
+    ],
+    "result": "Kolkata Knight Riders Won by 8 Wickets",
+    "winner": "Kolkata Knight Riders"
+  },
+  {
+    "fixtureId": "IPL2026-050",
+    "matchNumber": 50,
+    "stage": "league",
+    "venue": "Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium, Lucknow",
+    "dateTimeText": "MAY, THU 7 , 7:30 pm IST",
+    "teamA": "Lucknow Super Giants",
+    "teamB": "Royal Challengers Bengaluru",
+    "innings": [
+      {
+        "team": "Lucknow Super Giants",
+        "runs": 209,
+        "wickets": 3,
+        "overs": "19.0"
+      },
+      {
+        "team": "Royal Challengers Bengaluru",
+        "runs": 203,
+        "wickets": 6,
+        "overs": "19.0"
+      }
+    ],
+    "result": "Lucknow Super Giants Won by 9 Runs (D/L Method)",
+    "winner": "Lucknow Super Giants"
+  },
+  {
+    "fixtureId": "IPL2026-049",
+    "matchNumber": 49,
+    "stage": "league",
+    "venue": "Rajiv Gandhi International Stadium, Hyderabad",
+    "dateTimeText": "MAY, WED 6 , 7:30 pm IST",
+    "teamA": "Sunrisers Hyderabad",
+    "teamB": "Punjab Kings",
+    "innings": [
+      {
+        "team": "Sunrisers Hyderabad",
+        "runs": 235,
+        "wickets": 4,
+        "overs": "20.0"
+      },
+      {
+        "team": "Punjab Kings",
+        "runs": 202,
+        "wickets": 7,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Sunrisers Hyderabad Won by 33 Runs",
+    "winner": "Sunrisers Hyderabad"
+  },
+  {
+    "fixtureId": "IPL2026-048",
+    "matchNumber": 48,
+    "stage": "league",
+    "venue": "Arun Jaitley Stadium, Delhi",
+    "dateTimeText": "MAY, TUE 5 , 7:30 pm IST",
+    "teamA": "Delhi Capitals",
+    "teamB": "Chennai Super Kings",
+    "innings": [
+      {
+        "team": "Delhi Capitals",
+        "runs": 155,
+        "wickets": 7,
+        "overs": "20.0"
+      },
+      {
+        "team": "Chennai Super Kings",
+        "runs": 159,
+        "wickets": 2,
+        "overs": "17.3"
+      }
+    ],
+    "result": "Chennai Super Kings Won by 8 Wickets",
+    "winner": "Chennai Super Kings"
+  },
+  {
+    "fixtureId": "IPL2026-047",
+    "matchNumber": 47,
+    "stage": "league",
+    "venue": "Wankhede Stadium, Mumbai",
+    "dateTimeText": "MAY, MON 4 , 7:30 pm IST",
+    "teamA": "Mumbai Indians",
+    "teamB": "Lucknow Super Giants",
+    "innings": [
+      {
+        "team": "Mumbai Indians",
+        "runs": 229,
+        "wickets": 4,
+        "overs": "18.4"
+      },
+      {
+        "team": "Lucknow Super Giants",
+        "runs": 228,
+        "wickets": 5,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Mumbai Indians Won by 6 Wickets",
+    "winner": "Mumbai Indians"
+  },
+  {
+    "fixtureId": "IPL2026-046",
+    "matchNumber": 46,
+    "stage": "league",
+    "venue": "Narendra Modi Stadium, Ahmedabad",
+    "dateTimeText": "MAY, SUN 3 , 7:30 pm IST",
+    "teamA": "Gujarat Titans",
+    "teamB": "Punjab Kings",
+    "innings": [
+      {
+        "team": "Gujarat Titans",
+        "runs": 167,
+        "wickets": 6,
+        "overs": "19.5"
+      },
+      {
+        "team": "Punjab Kings",
+        "runs": 163,
+        "wickets": 9,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Gujarat Titans Won by 4 Wickets",
+    "winner": "Gujarat Titans"
+  },
+  {
+    "fixtureId": "IPL2026-045",
+    "matchNumber": 45,
+    "stage": "league",
+    "venue": "Rajiv Gandhi International Stadium, Hyderabad",
+    "dateTimeText": "MAY, SUN 3 , 3:30 pm IST",
+    "teamA": "Sunrisers Hyderabad",
+    "teamB": "Kolkata Knight Riders",
+    "innings": [
+      {
+        "team": "Sunrisers Hyderabad",
+        "runs": 165,
+        "wickets": 10,
+        "overs": "19.0"
+      },
+      {
+        "team": "Kolkata Knight Riders",
+        "runs": 169,
+        "wickets": 3,
+        "overs": "18.2"
+      }
+    ],
+    "result": "Kolkata Knight Riders Won by 7 Wickets",
+    "winner": "Kolkata Knight Riders"
+  },
+  {
+    "fixtureId": "IPL2026-044",
+    "matchNumber": 44,
+    "stage": "league",
+    "venue": "MA Chidambaram Stadium, Chennai",
+    "dateTimeText": "MAY, SAT 2 , 7:30 pm IST",
+    "teamA": "Chennai Super Kings",
+    "teamB": "Mumbai Indians",
+    "innings": [
+      {
+        "team": "Chennai Super Kings",
+        "runs": 160,
+        "wickets": 2,
+        "overs": "18.1"
+      },
+      {
+        "team": "Mumbai Indians",
+        "runs": 159,
+        "wickets": 7,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Chennai Super Kings Won by 8 Wickets",
+    "winner": "Chennai Super Kings"
+  },
+  {
+    "fixtureId": "IPL2026-043",
+    "matchNumber": 43,
+    "stage": "league",
+    "venue": "Sawai Mansingh Stadium, Jaipur",
+    "dateTimeText": "MAY, FRI 1 , 7:30 pm IST",
+    "teamA": "Rajasthan Royals",
+    "teamB": "Delhi Capitals",
+    "innings": [
+      {
+        "team": "Rajasthan Royals",
+        "runs": 225,
+        "wickets": 6,
+        "overs": "20.0"
+      },
+      {
+        "team": "Delhi Capitals",
+        "runs": 226,
+        "wickets": 3,
+        "overs": "19.1"
+      }
+    ],
+    "result": "Delhi Capitals Won by 7 Wickets",
+    "winner": "Delhi Capitals"
+  },
+  {
+    "fixtureId": "IPL2026-042",
+    "matchNumber": 42,
+    "stage": "league",
+    "venue": "Narendra Modi Stadium, Ahmedabad",
+    "dateTimeText": "APR, THU 30 , 7:30 pm IST",
+    "teamA": "Gujarat Titans",
+    "teamB": "Royal Challengers Bengaluru",
+    "innings": [
+      {
+        "team": "Gujarat Titans",
+        "runs": 158,
+        "wickets": 6,
+        "overs": "15.5"
+      },
+      {
+        "team": "Royal Challengers Bengaluru",
+        "runs": 155,
+        "wickets": 10,
+        "overs": "19.2"
+      }
+    ],
+    "result": "Gujarat Titans Won by 4 Wickets",
+    "winner": "Gujarat Titans"
+  },
+  {
+    "fixtureId": "IPL2026-041",
+    "matchNumber": 41,
+    "stage": "league",
+    "venue": "Wankhede Stadium, Mumbai",
+    "dateTimeText": "APR, WED 29 , 7:30 pm IST",
+    "teamA": "Mumbai Indians",
+    "teamB": "Sunrisers Hyderabad",
+    "innings": [
+      {
+        "team": "Mumbai Indians",
+        "runs": 243,
+        "wickets": 5,
+        "overs": "20.0"
+      },
+      {
+        "team": "Sunrisers Hyderabad",
+        "runs": 249,
+        "wickets": 4,
+        "overs": "18.4"
+      }
+    ],
+    "result": "Sunrisers Hyderabad Won by 6 Wickets",
+    "winner": "Sunrisers Hyderabad"
+  },
+  {
+    "fixtureId": "IPL2026-040",
+    "matchNumber": 40,
+    "stage": "league",
+    "venue": "New International Cricket Stadium, New Chandigarh",
+    "dateTimeText": "APR, TUE 28 , 7:30 pm IST",
+    "teamA": "Punjab Kings",
+    "teamB": "Rajasthan Royals",
+    "innings": [
+      {
+        "team": "Punjab Kings",
+        "runs": 222,
+        "wickets": 4,
+        "overs": "20.0"
+      },
+      {
+        "team": "Rajasthan Royals",
+        "runs": 228,
+        "wickets": 4,
+        "overs": "19.2"
+      }
+    ],
+    "result": "Rajasthan Royals Won by 6 Wickets",
+    "winner": "Rajasthan Royals"
+  },
+  {
+    "fixtureId": "IPL2026-039",
+    "matchNumber": 39,
+    "stage": "league",
+    "venue": "Arun Jaitley Stadium, Delhi",
+    "dateTimeText": "APR, MON 27 , 7:30 pm IST",
+    "teamA": "Delhi Capitals",
+    "teamB": "Royal Challengers Bengaluru",
+    "innings": [
+      {
+        "team": "Delhi Capitals",
+        "runs": 75,
+        "wickets": 10,
+        "overs": "16.3"
+      },
+      {
+        "team": "Royal Challengers Bengaluru",
+        "runs": 77,
+        "wickets": 1,
+        "overs": "6.3"
+      }
+    ],
+    "result": "Royal Challengers Bengaluru Won by 9 Wickets",
+    "winner": "Royal Challengers Bengaluru"
+  },
+  {
+    "fixtureId": "IPL2026-038",
+    "matchNumber": 38,
+    "stage": "league",
+    "venue": "Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium, Lucknow",
+    "dateTimeText": "APR, SUN 26 , 7:30 pm IST",
+    "teamA": "Lucknow Super Giants",
+    "teamB": "Kolkata Knight Riders",
+    "innings": [
+      {
+        "team": "Lucknow Super Giants",
+        "runs": 155,
+        "wickets": 8,
+        "overs": "20.0"
+      },
+      {
+        "team": "Kolkata Knight Riders",
+        "runs": 155,
+        "wickets": 7,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Kolkata Knight Riders Won by Super Over",
+    "winner": "Kolkata Knight Riders"
+  },
+  {
+    "fixtureId": "IPL2026-037",
+    "matchNumber": 37,
+    "stage": "league",
+    "venue": "MA Chidambaram Stadium, Chennai",
+    "dateTimeText": "APR, SUN 26 , 3:30 pm IST",
+    "teamA": "Chennai Super Kings",
+    "teamB": "Gujarat Titans",
+    "innings": [
+      {
+        "team": "Chennai Super Kings",
+        "runs": 158,
+        "wickets": 7,
+        "overs": "20.0"
+      },
+      {
+        "team": "Gujarat Titans",
+        "runs": 162,
+        "wickets": 2,
+        "overs": "16.4"
+      }
+    ],
+    "result": "Gujarat Titans Won by 8 Wickets",
+    "winner": "Gujarat Titans"
+  },
+  {
+    "fixtureId": "IPL2026-036",
+    "matchNumber": 36,
+    "stage": "league",
+    "venue": "Sawai Mansingh Stadium, Jaipur",
+    "dateTimeText": "APR, SAT 25 , 7:30 pm IST",
+    "teamA": "Rajasthan Royals",
+    "teamB": "Sunrisers Hyderabad",
+    "innings": [
+      {
+        "team": "Rajasthan Royals",
+        "runs": 228,
+        "wickets": 6,
+        "overs": "20.0"
+      },
+      {
+        "team": "Sunrisers Hyderabad",
+        "runs": 229,
+        "wickets": 5,
+        "overs": "18.3"
+      }
+    ],
+    "result": "Sunrisers Hyderabad Won by 5 Wickets",
+    "winner": "Sunrisers Hyderabad"
+  },
+  {
+    "fixtureId": "IPL2026-035",
+    "matchNumber": 35,
+    "stage": "league",
+    "venue": "Arun Jaitley Stadium, Delhi",
+    "dateTimeText": "APR, SAT 25 , 3:30 pm IST",
+    "teamA": "Delhi Capitals",
+    "teamB": "Punjab Kings",
+    "innings": [
+      {
+        "team": "Delhi Capitals",
+        "runs": 264,
+        "wickets": 2,
+        "overs": "20.0"
+      },
+      {
+        "team": "Punjab Kings",
+        "runs": 265,
+        "wickets": 4,
+        "overs": "18.5"
+      }
+    ],
+    "result": "Punjab Kings Won by 6 Wickets",
+    "winner": "Punjab Kings"
+  },
+  {
+    "fixtureId": "IPL2026-034",
+    "matchNumber": 34,
+    "stage": "league",
+    "venue": "M Chinnaswamy Stadium, Bengaluru",
+    "dateTimeText": "APR, FRI 24 , 7:30 pm IST",
+    "teamA": "Royal Challengers Bengaluru",
+    "teamB": "Gujarat Titans",
+    "innings": [
+      {
+        "team": "Royal Challengers Bengaluru",
+        "runs": 206,
+        "wickets": 5,
+        "overs": "18.5"
+      },
+      {
+        "team": "Gujarat Titans",
+        "runs": 205,
+        "wickets": 3,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Royal Challengers Bengaluru Won by 5 Wickets",
+    "winner": "Royal Challengers Bengaluru"
+  },
+  {
+    "fixtureId": "IPL2026-033",
+    "matchNumber": 33,
+    "stage": "league",
+    "venue": "Wankhede Stadium, Mumbai",
+    "dateTimeText": "APR, THU 23 , 7:30 pm IST",
+    "teamA": "Mumbai Indians",
+    "teamB": "Chennai Super Kings",
+    "innings": [
+      {
+        "team": "Mumbai Indians",
+        "runs": 104,
+        "wickets": 10,
+        "overs": "19.0"
+      },
+      {
+        "team": "Chennai Super Kings",
+        "runs": 207,
+        "wickets": 6,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Chennai Super Kings Won by 103 Runs",
+    "winner": "Chennai Super Kings"
+  },
+  {
+    "fixtureId": "IPL2026-032",
+    "matchNumber": 32,
+    "stage": "league",
+    "venue": "Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium, Lucknow",
+    "dateTimeText": "APR, WED 22 , 7:30 pm IST",
+    "teamA": "Lucknow Super Giants",
+    "teamB": "Rajasthan Royals",
+    "innings": [
+      {
+        "team": "Lucknow Super Giants",
+        "runs": 119,
+        "wickets": 10,
+        "overs": "18.0"
+      },
+      {
+        "team": "Rajasthan Royals",
+        "runs": 159,
+        "wickets": 6,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Rajasthan Royals Won by 40 Runs",
+    "winner": "Rajasthan Royals"
+  },
+  {
+    "fixtureId": "IPL2026-031",
+    "matchNumber": 31,
+    "stage": "league",
+    "venue": "Rajiv Gandhi International Stadium, Hyderabad",
+    "dateTimeText": "APR, TUE 21 , 7:30 pm IST",
+    "teamA": "Sunrisers Hyderabad",
+    "teamB": "Delhi Capitals",
+    "innings": [
+      {
+        "team": "Sunrisers Hyderabad",
+        "runs": 242,
+        "wickets": 2,
+        "overs": "20.0"
+      },
+      {
+        "team": "Delhi Capitals",
+        "runs": 195,
+        "wickets": 9,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Sunrisers Hyderabad Won by 47 Runs",
+    "winner": "Sunrisers Hyderabad"
+  },
+  {
+    "fixtureId": "IPL2026-030",
+    "matchNumber": 30,
+    "stage": "league",
+    "venue": "Narendra Modi Stadium, Ahmedabad",
+    "dateTimeText": "APR, MON 20 , 7:30 pm IST",
+    "teamA": "Gujarat Titans",
+    "teamB": "Mumbai Indians",
+    "innings": [
+      {
+        "team": "Gujarat Titans",
+        "runs": 100,
+        "wickets": 10,
+        "overs": "15.5"
+      },
+      {
+        "team": "Mumbai Indians",
+        "runs": 199,
+        "wickets": 5,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Mumbai Indians Won by 99 Runs",
+    "winner": "Mumbai Indians"
+  },
+  {
+    "fixtureId": "IPL2026-029",
+    "matchNumber": 29,
+    "stage": "league",
+    "venue": "New International Cricket Stadium, New Chandigarh",
+    "dateTimeText": "APR, SUN 19 , 7:30 pm IST",
+    "teamA": "Punjab Kings",
+    "teamB": "Lucknow Super Giants",
+    "innings": [
+      {
+        "team": "Punjab Kings",
+        "runs": 254,
+        "wickets": 7,
+        "overs": "20.0"
+      },
+      {
+        "team": "Lucknow Super Giants",
+        "runs": 200,
+        "wickets": 5,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Punjab Kings Won by 54 Runs",
+    "winner": "Punjab Kings"
+  },
+  {
+    "fixtureId": "IPL2026-028",
+    "matchNumber": 28,
+    "stage": "league",
+    "venue": "Eden Gardens, Kolkata",
+    "dateTimeText": "APR, SUN 19 , 3:30 pm IST",
+    "teamA": "Kolkata Knight Riders",
+    "teamB": "Rajasthan Royals",
+    "innings": [
+      {
+        "team": "Kolkata Knight Riders",
+        "runs": 161,
+        "wickets": 6,
+        "overs": "19.4"
+      },
+      {
+        "team": "Rajasthan Royals",
+        "runs": 155,
+        "wickets": 9,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Kolkata Knight Riders Won by 4 Wickets",
+    "winner": "Kolkata Knight Riders"
+  },
+  {
+    "fixtureId": "IPL2026-027",
+    "matchNumber": 27,
+    "stage": "league",
+    "venue": "Rajiv Gandhi International Stadium, Hyderabad",
+    "dateTimeText": "APR, SAT 18 , 7:30 pm IST",
+    "teamA": "Sunrisers Hyderabad",
+    "teamB": "Chennai Super Kings",
+    "innings": [
+      {
+        "team": "Sunrisers Hyderabad",
+        "runs": 194,
+        "wickets": 9,
+        "overs": "20.0"
+      },
+      {
+        "team": "Chennai Super Kings",
+        "runs": 184,
+        "wickets": 8,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Sunrisers Hyderabad Won by 10 Runs",
+    "winner": "Sunrisers Hyderabad"
+  },
+  {
+    "fixtureId": "IPL2026-026",
+    "matchNumber": 26,
+    "stage": "league",
+    "venue": "M Chinnaswamy Stadium, Bengaluru",
+    "dateTimeText": "APR, SAT 18 , 3:30 pm IST",
+    "teamA": "Royal Challengers Bengaluru",
+    "teamB": "Delhi Capitals",
+    "innings": [
+      {
+        "team": "Royal Challengers Bengaluru",
+        "runs": 175,
+        "wickets": 8,
+        "overs": "20.0"
+      },
+      {
+        "team": "Delhi Capitals",
+        "runs": 179,
+        "wickets": 4,
+        "overs": "19.5"
+      }
+    ],
+    "result": "Delhi Capitals Won by 6 Wickets",
+    "winner": "Delhi Capitals"
+  },
+  {
+    "fixtureId": "IPL2026-025",
+    "matchNumber": 25,
+    "stage": "league",
+    "venue": "Narendra Modi Stadium, Ahmedabad",
+    "dateTimeText": "APR, FRI 17 , 7:30 pm IST",
+    "teamA": "Gujarat Titans",
+    "teamB": "Kolkata Knight Riders",
+    "innings": [
+      {
+        "team": "Gujarat Titans",
+        "runs": 181,
+        "wickets": 5,
+        "overs": "19.4"
+      },
+      {
+        "team": "Kolkata Knight Riders",
+        "runs": 180,
+        "wickets": 10,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Gujarat Titans Won by 5 Wickets",
+    "winner": "Gujarat Titans"
+  },
+  {
+    "fixtureId": "IPL2026-024",
+    "matchNumber": 24,
+    "stage": "league",
+    "venue": "Wankhede Stadium, Mumbai",
+    "dateTimeText": "APR, THU 16 , 7:30 pm IST",
+    "teamA": "Mumbai Indians",
+    "teamB": "Punjab Kings",
+    "innings": [
+      {
+        "team": "Mumbai Indians",
+        "runs": 195,
+        "wickets": 6,
+        "overs": "20.0"
+      },
+      {
+        "team": "Punjab Kings",
+        "runs": 198,
+        "wickets": 3,
+        "overs": "16.3"
+      }
+    ],
+    "result": "Punjab Kings Won by 7 Wickets",
+    "winner": "Punjab Kings"
+  },
+  {
+    "fixtureId": "IPL2026-023",
+    "matchNumber": 23,
+    "stage": "league",
+    "venue": "M Chinnaswamy Stadium, Bengaluru",
+    "dateTimeText": "APR, WED 15 , 7:30 pm IST",
+    "teamA": "Royal Challengers Bengaluru",
+    "teamB": "Lucknow Super Giants",
+    "innings": [
+      {
+        "team": "Royal Challengers Bengaluru",
+        "runs": 149,
+        "wickets": 5,
+        "overs": "15.1"
+      },
+      {
+        "team": "Lucknow Super Giants",
+        "runs": 146,
+        "wickets": 10,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Royal Challengers Bengaluru Won by 5 Wickets",
+    "winner": "Royal Challengers Bengaluru"
+  },
+  {
+    "fixtureId": "IPL2026-022",
+    "matchNumber": 22,
+    "stage": "league",
+    "venue": "MA Chidambaram Stadium, Chennai",
+    "dateTimeText": "APR, TUE 14 , 7:30 pm IST",
+    "teamA": "Chennai Super Kings",
+    "teamB": "Kolkata Knight Riders",
+    "innings": [
+      {
+        "team": "Chennai Super Kings",
+        "runs": 192,
+        "wickets": 5,
+        "overs": "20.0"
+      },
+      {
+        "team": "Kolkata Knight Riders",
+        "runs": 160,
+        "wickets": 7,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Chennai Super Kings Won by 32 Runs",
+    "winner": "Chennai Super Kings"
+  },
+  {
+    "fixtureId": "IPL2026-021",
+    "matchNumber": 21,
+    "stage": "league",
+    "venue": "Rajiv Gandhi International Stadium, Hyderabad",
+    "dateTimeText": "APR, MON 13 , 7:30 pm IST",
+    "teamA": "Sunrisers Hyderabad",
+    "teamB": "Rajasthan Royals",
+    "innings": [
+      {
+        "team": "Sunrisers Hyderabad",
+        "runs": 216,
+        "wickets": 6,
+        "overs": "20.0"
+      },
+      {
+        "team": "Rajasthan Royals",
+        "runs": 159,
+        "wickets": 10,
+        "overs": "19.0"
+      }
+    ],
+    "result": "Sunrisers Hyderabad Won by 57 Runs",
+    "winner": "Sunrisers Hyderabad"
+  },
+  {
+    "fixtureId": "IPL2026-020",
+    "matchNumber": 20,
+    "stage": "league",
+    "venue": "Wankhede Stadium, Mumbai",
+    "dateTimeText": "APR, SUN 12 , 7:30 pm IST",
+    "teamA": "Mumbai Indians",
+    "teamB": "Royal Challengers Bengaluru",
+    "innings": [
+      {
+        "team": "Mumbai Indians",
+        "runs": 222,
+        "wickets": 5,
+        "overs": "20.0"
+      },
+      {
+        "team": "Royal Challengers Bengaluru",
+        "runs": 240,
+        "wickets": 4,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Royal Challengers Bengaluru Won by 18 Runs",
+    "winner": "Royal Challengers Bengaluru"
+  },
+  {
+    "fixtureId": "IPL2026-019",
+    "matchNumber": 19,
+    "stage": "league",
+    "venue": "Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium, Lucknow",
+    "dateTimeText": "APR, SUN 12 , 3:30 pm IST",
+    "teamA": "Lucknow Super Giants",
+    "teamB": "Gujarat Titans",
+    "innings": [
+      {
+        "team": "Lucknow Super Giants",
+        "runs": 164,
+        "wickets": 8,
+        "overs": "20.0"
+      },
+      {
+        "team": "Gujarat Titans",
+        "runs": 165,
+        "wickets": 3,
+        "overs": "18.4"
+      }
+    ],
+    "result": "Gujarat Titans Won by 7 Wickets",
+    "winner": "Gujarat Titans"
+  },
+  {
+    "fixtureId": "IPL2026-018",
+    "matchNumber": 18,
+    "stage": "league",
+    "venue": "MA Chidambaram Stadium, Chennai",
+    "dateTimeText": "APR, SAT 11 , 7:30 pm IST",
+    "teamA": "Chennai Super Kings",
+    "teamB": "Delhi Capitals",
+    "innings": [
+      {
+        "team": "Chennai Super Kings",
+        "runs": 212,
+        "wickets": 2,
+        "overs": "20.0"
+      },
+      {
+        "team": "Delhi Capitals",
+        "runs": 189,
+        "wickets": 10,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Chennai Super Kings Won by 23 Runs",
+    "winner": "Chennai Super Kings"
+  },
+  {
+    "fixtureId": "IPL2026-017",
+    "matchNumber": 17,
+    "stage": "league",
+    "venue": "New International Cricket Stadium, New Chandigarh",
+    "dateTimeText": "APR, SAT 11 , 3:30 pm IST",
+    "teamA": "Punjab Kings",
+    "teamB": "Sunrisers Hyderabad",
+    "innings": [
+      {
+        "team": "Punjab Kings",
+        "runs": 223,
+        "wickets": 4,
+        "overs": "18.5"
+      },
+      {
+        "team": "Sunrisers Hyderabad",
+        "runs": 219,
+        "wickets": 6,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Punjab Kings Won by 6 Wickets",
+    "winner": "Punjab Kings"
+  },
+  {
+    "fixtureId": "IPL2026-016",
+    "matchNumber": 16,
+    "stage": "league",
+    "venue": "ACA Stadium, Guwahati",
+    "dateTimeText": "APR, FRI 10 , 7:30 pm IST",
+    "teamA": "Rajasthan Royals",
+    "teamB": "Royal Challengers Bengaluru",
+    "innings": [
+      {
+        "team": "Rajasthan Royals",
+        "runs": 202,
+        "wickets": 4,
+        "overs": "18.0"
+      },
+      {
+        "team": "Royal Challengers Bengaluru",
+        "runs": 201,
+        "wickets": 8,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Rajasthan Royals Won by 6 Wickets",
+    "winner": "Rajasthan Royals"
+  },
+  {
+    "fixtureId": "IPL2026-015",
+    "matchNumber": 15,
+    "stage": "league",
+    "venue": "Eden Gardens, Kolkata",
+    "dateTimeText": "APR, THU 9 , 7:30 pm IST",
+    "teamA": "Kolkata Knight Riders",
+    "teamB": "Lucknow Super Giants",
+    "innings": [
+      {
+        "team": "Kolkata Knight Riders",
+        "runs": 181,
+        "wickets": 4,
+        "overs": "20.0"
+      },
+      {
+        "team": "Lucknow Super Giants",
+        "runs": 182,
+        "wickets": 7,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Lucknow Super Giants Won by 3 Wickets",
+    "winner": "Lucknow Super Giants"
+  },
+  {
+    "fixtureId": "IPL2026-014",
+    "matchNumber": 14,
+    "stage": "league",
+    "venue": "Arun Jaitley Stadium, Delhi",
+    "dateTimeText": "APR, WED 8 , 7:30 pm IST",
+    "teamA": "Delhi Capitals",
+    "teamB": "Gujarat Titans",
+    "innings": [
+      {
+        "team": "Delhi Capitals",
+        "runs": 209,
+        "wickets": 8,
+        "overs": "20.0"
+      },
+      {
+        "team": "Gujarat Titans",
+        "runs": 210,
+        "wickets": 4,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Gujarat Titans Won by 1 Run",
+    "winner": "Gujarat Titans"
+  },
+  {
+    "fixtureId": "IPL2026-013",
+    "matchNumber": 13,
+    "stage": "league",
+    "venue": "ACA Stadium, Guwahati",
+    "dateTimeText": "APR, TUE 7 , 7:30 pm IST",
+    "teamA": "Rajasthan Royals",
+    "teamB": "Mumbai Indians",
+    "innings": [
+      {
+        "team": "Rajasthan Royals",
+        "runs": 150,
+        "wickets": 3,
+        "overs": "11.0"
+      },
+      {
+        "team": "Mumbai Indians",
+        "runs": 123,
+        "wickets": 9,
+        "overs": "11.0"
+      }
+    ],
+    "result": "Rajasthan Royals Won by 27 Runs",
+    "winner": "Rajasthan Royals"
+  },
+  {
+    "fixtureId": "IPL2026-012",
+    "matchNumber": 12,
+    "stage": "league",
+    "venue": "Eden Gardens, Kolkata",
+    "dateTimeText": "APR, MON 6 , 7:30 pm IST",
+    "teamA": "Kolkata Knight Riders",
+    "teamB": "Punjab Kings",
+    "innings": [
+      {
+        "team": "Kolkata Knight Riders",
+        "runs": 25,
+        "wickets": 2,
+        "overs": "3.4"
+      },
+      {
+        "team": "Punjab Kings",
+        "runs": null,
+        "wickets": null,
+        "overs": null
+      }
+    ],
+    "result": "No Result",
+    "winner": null
+  },
+  {
+    "fixtureId": "IPL2026-011",
+    "matchNumber": 11,
+    "stage": "league",
+    "venue": "M Chinnaswamy Stadium, Bengaluru",
+    "dateTimeText": "APR, SUN 5 , 7:30 pm IST",
+    "teamA": "Royal Challengers Bengaluru",
+    "teamB": "Chennai Super Kings",
+    "innings": [
+      {
+        "team": "Royal Challengers Bengaluru",
+        "runs": 250,
+        "wickets": 3,
+        "overs": "20.0"
+      },
+      {
+        "team": "Chennai Super Kings",
+        "runs": 207,
+        "wickets": 10,
+        "overs": "19.4"
+      }
+    ],
+    "result": "Royal Challengers Bengaluru Won by 43 Runs",
+    "winner": "Royal Challengers Bengaluru"
+  },
+  {
+    "fixtureId": "IPL2026-010",
+    "matchNumber": 10,
+    "stage": "league",
+    "venue": "Rajiv Gandhi International Stadium, Hyderabad",
+    "dateTimeText": "APR, SUN 5 , 3:30 pm IST",
+    "teamA": "Sunrisers Hyderabad",
+    "teamB": "Lucknow Super Giants",
+    "innings": [
+      {
+        "team": "Sunrisers Hyderabad",
+        "runs": 156,
+        "wickets": 9,
+        "overs": "20.0"
+      },
+      {
+        "team": "Lucknow Super Giants",
+        "runs": 160,
+        "wickets": 5,
+        "overs": "19.5"
+      }
+    ],
+    "result": "Lucknow Super Giants Won by 5 Wickets",
+    "winner": "Lucknow Super Giants"
+  },
+  {
+    "fixtureId": "IPL2026-009",
+    "matchNumber": 9,
+    "stage": "league",
+    "venue": "Narendra Modi Stadium, Ahmedabad",
+    "dateTimeText": "APR, SAT 4 , 7:30 pm IST",
+    "teamA": "Gujarat Titans",
+    "teamB": "Rajasthan Royals",
+    "innings": [
+      {
+        "team": "Gujarat Titans",
+        "runs": 204,
+        "wickets": 8,
+        "overs": "20.0"
+      },
+      {
+        "team": "Rajasthan Royals",
+        "runs": 210,
+        "wickets": 6,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Rajasthan Royals Won by 6 Runs",
+    "winner": "Rajasthan Royals"
+  },
+  {
+    "fixtureId": "IPL2026-008",
+    "matchNumber": 8,
+    "stage": "league",
+    "venue": "Arun Jaitley Stadium, Delhi",
+    "dateTimeText": "APR, SAT 4 , 3:30 pm IST",
+    "teamA": "Delhi Capitals",
+    "teamB": "Mumbai Indians",
+    "innings": [
+      {
+        "team": "Delhi Capitals",
+        "runs": 164,
+        "wickets": 4,
+        "overs": "18.1"
+      },
+      {
+        "team": "Mumbai Indians",
+        "runs": 162,
+        "wickets": 6,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Delhi Capitals Won by 6 Wickets",
+    "winner": "Delhi Capitals"
+  },
+  {
+    "fixtureId": "IPL2026-007",
+    "matchNumber": 7,
+    "stage": "league",
+    "venue": "MA Chidambaram Stadium, Chennai",
+    "dateTimeText": "APR, FRI 3 , 7:30 pm IST",
+    "teamA": "Chennai Super Kings",
+    "teamB": "Punjab Kings",
+    "innings": [
+      {
+        "team": "Chennai Super Kings",
+        "runs": 209,
+        "wickets": 5,
+        "overs": "20.0"
+      },
+      {
+        "team": "Punjab Kings",
+        "runs": 210,
+        "wickets": 5,
+        "overs": "18.4"
+      }
+    ],
+    "result": "Punjab Kings Won by 5 Wickets",
+    "winner": "Punjab Kings"
+  },
+  {
+    "fixtureId": "IPL2026-006",
+    "matchNumber": 6,
+    "stage": "league",
+    "venue": "Eden Gardens, Kolkata",
+    "dateTimeText": "APR, THU 2 , 7:30 pm IST",
+    "teamA": "Kolkata Knight Riders",
+    "teamB": "Sunrisers Hyderabad",
+    "innings": [
+      {
+        "team": "Kolkata Knight Riders",
+        "runs": 161,
+        "wickets": 10,
+        "overs": "16.0"
+      },
+      {
+        "team": "Sunrisers Hyderabad",
+        "runs": 226,
+        "wickets": 8,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Sunrisers Hyderabad Won by 65 Runs",
+    "winner": "Sunrisers Hyderabad"
+  },
+  {
+    "fixtureId": "IPL2026-005",
+    "matchNumber": 5,
+    "stage": "league",
+    "venue": "Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium, Lucknow",
+    "dateTimeText": "APR, WED 1 , 7:30 pm IST",
+    "teamA": "Lucknow Super Giants",
+    "teamB": "Delhi Capitals",
+    "innings": [
+      {
+        "team": "Lucknow Super Giants",
+        "runs": 141,
+        "wickets": 10,
+        "overs": "18.4"
+      },
+      {
+        "team": "Delhi Capitals",
+        "runs": 145,
+        "wickets": 4,
+        "overs": "17.1"
+      }
+    ],
+    "result": "Delhi Capitals Won by 6 Wickets",
+    "winner": "Delhi Capitals"
+  },
+  {
+    "fixtureId": "IPL2026-004",
+    "matchNumber": 4,
+    "stage": "league",
+    "venue": "New International Cricket Stadium, New Chandigarh",
+    "dateTimeText": "MAR, TUE 31 , 7:30 pm IST",
+    "teamA": "Punjab Kings",
+    "teamB": "Gujarat Titans",
+    "innings": [
+      {
+        "team": "Punjab Kings",
+        "runs": 165,
+        "wickets": 7,
+        "overs": "19.1"
+      },
+      {
+        "team": "Gujarat Titans",
+        "runs": 162,
+        "wickets": 6,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Punjab Kings Won by 3 Wickets",
+    "winner": "Punjab Kings"
+  },
+  {
+    "fixtureId": "IPL2026-003",
+    "matchNumber": 3,
+    "stage": "league",
+    "venue": "ACA Stadium, Guwahati",
+    "dateTimeText": "MAR, MON 30 , 7:30 pm IST",
+    "teamA": "Rajasthan Royals",
+    "teamB": "Chennai Super Kings",
+    "innings": [
+      {
+        "team": "Rajasthan Royals",
+        "runs": 128,
+        "wickets": 2,
+        "overs": "12.1"
+      },
+      {
+        "team": "Chennai Super Kings",
+        "runs": 127,
+        "wickets": 10,
+        "overs": "19.4"
+      }
+    ],
+    "result": "Rajasthan Royals Won by 8 Wickets",
+    "winner": "Rajasthan Royals"
+  },
+  {
+    "fixtureId": "IPL2026-002",
+    "matchNumber": 2,
+    "stage": "league",
+    "venue": "Wankhede Stadium, Mumbai",
+    "dateTimeText": "MAR, SUN 29 , 7:30 pm IST",
+    "teamA": "Mumbai Indians",
+    "teamB": "Kolkata Knight Riders",
+    "innings": [
+      {
+        "team": "Mumbai Indians",
+        "runs": 224,
+        "wickets": 4,
+        "overs": "19.1"
+      },
+      {
+        "team": "Kolkata Knight Riders",
+        "runs": 220,
+        "wickets": 4,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Mumbai Indians Won by 6 Wickets",
+    "winner": "Mumbai Indians"
+  },
+  {
+    "fixtureId": "IPL2026-001",
+    "matchNumber": 1,
+    "stage": "league",
+    "venue": "M Chinnaswamy Stadium, Bengaluru",
+    "dateTimeText": "MAR, SAT 28 , 7:30 pm IST",
+    "teamA": "Royal Challengers Bengaluru",
+    "teamB": "Sunrisers Hyderabad",
+    "innings": [
+      {
+        "team": "Royal Challengers Bengaluru",
+        "runs": 203,
+        "wickets": 4,
+        "overs": "15.4"
+      },
+      {
+        "team": "Sunrisers Hyderabad",
+        "runs": 201,
+        "wickets": 9,
+        "overs": "20.0"
+      }
+    ],
+    "result": "Royal Challengers Bengaluru Won by 6 Wickets",
+    "winner": "Royal Challengers Bengaluru"
+  }
+]

@@ -1,0 +1,2 @@
+export { StaticDatasetCricketDataProvider } from "./staticDatasetProvider";
+

@@ -1,0 +1,2 @@
+export { syncCricFixturesToMongo } from "./syncCricToMongo";
+
