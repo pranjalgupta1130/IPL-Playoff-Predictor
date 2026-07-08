@@ -7,6 +7,8 @@ import matchesRouter from "./routes/matches";
 import predictionsRouter from "./routes/predictions";
 import qualificationRouter from "./routes/qualification";
 import universeRouter from "./routes/universe";
+import authRouter from "./routes/auth";
+
 
 
 dotenv.config();
@@ -28,7 +30,7 @@ app.use("/api/matches", matchesRouter);
 app.use("/api/predictions", predictionsRouter);
 app.use("/api/qualification", qualificationRouter);
 app.use("/api/universe", universeRouter);
-
+app.use("/api/auth", authRouter);
 
 async function start() {
   await connectDB(MONGODB_URI);

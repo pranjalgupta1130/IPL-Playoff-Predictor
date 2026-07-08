@@ -45,7 +45,9 @@ export interface QualificationProbability {
   mathematicallyQualified?: boolean;
 }
 
-export interface MonteCarloTeamOdds extends QualificationProbability {}
+// Inherits all fields from QualificationProbability.
+export type MonteCarloTeamOdds = QualificationProbability;
+
 
 export interface MonteCarloResult {
   iterations: number;

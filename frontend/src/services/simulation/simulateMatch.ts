@@ -1,7 +1,7 @@
 import { applyMatchResult, rowsFromSnapshot } from "@/services/standingsEngine";
 import { calculateMatchWinProbability } from "@/services/simulation/matchWinProbability";
 import { sortStandings } from "@/services/standingsEngine";
-import type { Match, TeamBaseline, StandingsRow } from "@/types";
+import type { Match, TeamBaseline} from "@/types";
 import type { ResultType } from "@/types/cricket";
 
 type TeamSnapshot = TeamBaseline & { name: string; shortName: string };
