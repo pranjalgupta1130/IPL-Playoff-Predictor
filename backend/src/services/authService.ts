@@ -35,10 +35,12 @@ export async function registerUser(input: {
   };
 }
 
+import { signAccessToken } from "./jwtService";
+
 export async function loginUser(input: {
   email: string;
   password: string;
-}): Promise<{ id: string; name: string; email: string; favouriteTeam?: string }> {
+}): Promise<{ token: string; user: { id: string; name: string; email: string; favouriteTeam?: string } }> {
   const { email, password } = input;
   const normalizedEmail = email.trim().toLowerCase();
 
@@ -57,11 +59,22 @@ export async function loginUser(input: {
     throw err;
   }
 
-  return {
-    id: String(user._id),
-    name: user.name,
+  const token = signAccessToken({
+    sub: String(user._id),
     email: user.email,
+    name: user.name,
     favouriteTeam: user.favouriteTeam,
+  });
+
+  return {
+    token,
+    user: {
+      id: String(user._id),
+      name: user.name,
+      email: user.email,
+      favouriteTeam: user.favouriteTeam,
+    },
   };
 }
+
 

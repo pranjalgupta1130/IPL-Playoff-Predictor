@@ -48,8 +48,14 @@ export default function LoginPage() {
 
     setLoading(true);
     try {
-      await api.loginUser({ email, password });
-      setSuccess("Login successful");
+      const { data } = await api.loginUser({ email, password });
+
+      // Milestone 2: store JWT (no route protection yet, but foundation required)
+      if (data?.token) {
+        localStorage.setItem("ipl_auth_token", data.token);
+      }
+
+      setSuccess(data?.message ?? "Login successful");
     } catch (err) {
       setError(getErrorMessage(err));
     } finally {

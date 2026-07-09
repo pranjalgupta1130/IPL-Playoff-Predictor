@@ -50,11 +50,35 @@ export async function login(req: Request, res: Response): Promise<void> {
     }
 
     const result = await loginUser({ email, password });
-    res.json({ message: "Login successful", user: result });
+    res.json({ message: "Login successful", token: result.token, user: result.user });
   } catch (err) {
     const status = getErrorStatus(err);
     const message = (err as Error)?.message || "Login failed";
     res.status(status).json({ message });
   }
 }
+
+export async function getMe(req: Request, res: Response): Promise<void> {
+  try {
+    const user = req.user;
+    if (!user) {
+      res.status(401).json({ message: "Missing authenticated user" });
+      return;
+    }
+
+    res.json({
+      message: "Authenticated",
+      user: {
+        id: user.sub,
+        name: user.name,
+        email: user.email,
+        favouriteTeam: user.favouriteTeam,
+      },
+    });
+  } catch {
+    res.status(500).json({ message: "Failed to fetch authenticated user" });
+  }
+}
+
+
 
