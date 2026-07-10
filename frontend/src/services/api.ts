@@ -60,4 +60,35 @@ export const api = {
       probability: import("@/types").QualificationProbability;
       standings: FullStandingsResult;
     }>(`/qualification/team/${encodeURIComponent(teamName)}`),
+
+  registerUser: (payload: {
+    name: string;
+    email: string;
+    password: string;
+    confirmPassword: string;
+    favouriteTeam?: string;
+  }) =>
+    client.post<{
+      message: string;
+      user: { id: string; name: string; email: string; favouriteTeam?: string };
+    }>("/auth/register", payload),
+
+  loginUser: (payload: { email: string; password: string }) =>
+    client.post<{
+      message: string;
+      token: string;
+      user: { id: string; name: string; email: string; favouriteTeam?: string };
+    }>("/auth/login", payload),
+
+  getMe: () => {
+    const token = typeof window !== "undefined" ? localStorage.getItem("ipl_auth_token") : null;
+    return client.get<{
+      message: string;
+      user: { id: string; name: string; email: string; favouriteTeam?: string };
+    }>("/auth/me", {
+      headers: token ? { Authorization: `Bearer ${token}` } : {},
+    });
+  },
 };
+
+

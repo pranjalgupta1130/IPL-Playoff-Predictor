@@ -136,16 +136,19 @@ export const useSimulatorStore = create<SimulatorState>()(
           // Use backend-provided probabilities (no local Monte Carlo as authoritative)
           set({
             // Backend Monte Carlo result (probabilities/odds + metadata)
-            monteCarloResult: qualification.monteCarlo as any,
+            monteCarloResult: qualification.monteCarlo as MonteCarloResult,
+
           });
-        } catch (e: any) {
+        } catch (e) {
+          const err = e as { message?: unknown };
           set({
             loading: false,
             error:
-              e?.message ||
+              (typeof err.message === "string" ? err.message : null) ??
               "Could not load data from /api/universe and /api/qualification. Is the backend running?",
           });
         }
+
       },
 
       savePrediction: async (payload) => {
@@ -180,20 +183,25 @@ export const useSimulatorStore = create<SimulatorState>()(
             error: null,
           });
           get().runMonteCarlo();
-        } catch (e: any) {
-          const status = e?.response?.status;
-          const message = e?.response?.data?.message;
+        } catch (e) {
+          const err = e as {
+            response?: { status?: unknown; data?: { message?: unknown } };
+            message?: unknown;
+          };
+          const status = err.response?.status;
+          const message = err.response?.data?.message;
+
           set({
             predictions: prevPredictions,
             error:
-              message ||
+              (typeof message === "string" ? message : null) ||
               (typeof status === "number" ? `Request failed (status ${status})` : null) ||
-              (typeof e?.message === "string" ? e.message : null) ||
-              String(e) ||
+              (typeof err.message === "string" ? err.message : null) ||
               "Failed to save prediction",
           });
           get().recalculateLocally(prevPredictions);
         }
+
 
 
       },

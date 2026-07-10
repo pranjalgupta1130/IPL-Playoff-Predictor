@@ -1,4 +1,4 @@
-import { PLAYOFF_SPOTS, POINTS_PER_WIN } from "@/constants/tournament";
+import { PLAYOFF_SPOTS} from "@/constants/tournament";
 import type { Match, TeamBaseline } from "@/types";
 import { getMaximumPossiblePoints } from "@/utils/tournamentMath";
 
