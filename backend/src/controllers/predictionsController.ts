@@ -7,19 +7,11 @@ import { buildFullStandings } from "../services/standingsService";
 import { loadUniverseState } from "../services/universeService";
 
 async function loadStandingsPayload() {
-
-  const [teams, matches, predictions] = await Promise.all([
-    Team.find().lean(),
-    Match.find().lean(),
-    Prediction.find().lean(),
-  ]);
-  const upcoming = matches.filter((m) => !m.completed);
-  return buildFullStandings(
-    teams as unknown as Parameters<typeof buildFullStandings>[0],
-    upcoming as unknown as Parameters<typeof buildFullStandings>[1],
-    predictions as unknown as Parameters<typeof buildFullStandings>[2]
-
-  );
+  // IMPORTANT: standings must be rebuilt from the derived Match-50 universe (51-70 upcoming fixtures)
+  // to stay consistent with the simulator architecture.
+  // Using Mongo's `completed` flag here can yield an incompatible upcoming set.
+  const universe = await loadUniverseState();
+  return universe.simulation.fullStandings;
 }
 
 export async function getPredictions(_req: Request, res: Response): Promise<void> {

@@ -43,6 +43,13 @@ export async function loadUniverseState(): Promise<UniverseState> {
     Prediction.find().lean(),
   ]);
 
+  console.log("Total matches:", matches.length);
+
+if (matches.length > 0) {
+  console.log("First match document:");
+  console.dir(matches[0], { depth: null });
+}
+
   // IMPORTANT: Predictions must be applied to the derived universe.
   // For Match-50 architecture, the simulation and projected standings depend on the derived upcoming set (51-70).
   // If this ever breaks due to stale prediction ids or identifier shape, derived.simulationUniverse.predictionsForUpcoming will be empty.
