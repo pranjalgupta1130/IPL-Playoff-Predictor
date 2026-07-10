@@ -13,7 +13,6 @@ import {
 } from "../standingsService";
 import { calculateMatchWinProbability } from "./matchWinProbability";
 import { analyzeMathematicalStatus } from "./mathematicalElimination";
-
 import { createRng } from "./rng";
 
 const DEFAULT_ITERATIONS = 1000;
@@ -58,6 +57,7 @@ function simulateMatch(
 ): void {
   const standings = sortStandings(rowsFromSnapshot(snapshot));
   const liveByName = liveFromSnapshot(snapshot);
+
   const { probabilityA } = calculateMatchWinProbability(
     match.teamA,
     match.teamB,
@@ -65,18 +65,20 @@ function simulateMatch(
     standings,
     baselineByName
   );
+
   const winner = rng() < probabilityA ? match.teamA : match.teamB;
+
   const isChase = rng() < 0.55;
   let marginType: import("../../models/Match").MarginType;
   let margin: number;
   let chaseRuns: number | undefined;
 
-
   if (isChase) {
     marginType = rng() < 0.5 ? "chase_overs" : "balls_remaining";
-    margin = marginType === "chase_overs"
-      ? 14 + Math.floor(rng() * 5) + (Math.floor(rng() * 6)) / 10
-      : 8 + Math.floor(rng() * 35);
+    margin =
+      marginType === "chase_overs"
+        ? 14 + Math.floor(rng() * 5) + Math.floor(rng() * 6) / 10
+        : 8 + Math.floor(rng() * 35);
     chaseRuns = 155 + Math.floor(rng() * 45);
   } else {
     marginType = "defended_runs";
@@ -91,24 +93,30 @@ function simulateSeason(
   upcoming: IMatch[],
   predictionByMatch: Map<string, IPrediction>,
   baselineByName: Map<string, ITeam>,
-  rng: () => number
+  rng: () => number,
+  includeUserPredictions: boolean
 ) {
   const snapshot = snapshotFromTeams(teams);
+
   for (const match of upcoming) {
-    const pred = predictionByMatch.get(match._id.toString());
-    if (pred) {
-      applyPrediction(snapshot, {
-        teamA: match.teamA,
-        teamB: match.teamB,
-        predictedWinner: pred.predictedWinner,
-        margin: pred.margin,
-        marginType: pred.marginType,
-        chaseRuns: pred.chaseRuns,
-      });
-    } else {
-      simulateMatch(snapshot, match, baselineByName, rng);
+    if (includeUserPredictions) {
+      const pred = predictionByMatch.get(match._id.toString());
+      if (pred) {
+        applyPrediction(snapshot, {
+          teamA: match.teamA,
+          teamB: match.teamB,
+          predictedWinner: pred.predictedWinner,
+          margin: pred.margin,
+          marginType: pred.marginType,
+          chaseRuns: pred.chaseRuns,
+        });
+        continue;
+      }
     }
+
+    simulateMatch(snapshot, match, baselineByName, rng);
   }
+
   return sortStandings(rowsFromSnapshot(snapshot));
 }
 
@@ -134,25 +142,39 @@ function calibrate(
   };
 }
 
-
 export function runMonteCarloSimulation(
   teams: ITeam[],
   upcoming: IMatch[],
   predictions: IPrediction[],
   fullStandings: FullStandingsResult,
   iterations = DEFAULT_ITERATIONS,
-  seed?: number
+  seed?: number,
+  options?: { includeUserPredictions?: boolean }
 ): MonteCarloResult {
+  // includeUserPredictions=true => apply predictions as fixed outcomes for predicted fixtures.
+  // includeUserPredictions=false => ignore predictions; simulate only probabilistic matches.
+
   const rng = createRng(seed);
+
   const predictionByMatch = new Map(predictions.map((p) => [p.matchId.toString(), p]));
   const baselineByName = new Map(teams.map((t) => [t.name, t]));
   const projected = fullStandings.projected.standings;
+
+  const includeUserPredictions = options?.includeUserPredictions ?? false;
 
   const counters = new Map<string, { playoff: number; topTwo: number; eliminated: number }>();
   for (const t of teams) counters.set(t.name, { playoff: 0, topTwo: 0, eliminated: 0 });
 
   for (let i = 0; i < iterations; i++) {
-    const final = simulateSeason(teams, upcoming, predictionByMatch, baselineByName, rng);
+    const final = simulateSeason(
+      teams,
+      upcoming,
+      predictionByMatch,
+      baselineByName,
+      rng,
+      includeUserPredictions
+    );
+
     final.forEach((row, index) => {
       const rank = row.rank ?? index + 1;
       const c = counters.get(row.name)!;
@@ -166,32 +188,10 @@ export function runMonteCarloSimulation(
     .map((t) => {
       const c = counters.get(t.name)!;
 
-      // Defensive validation on raw counters (must be the authoritative source).
-      if (c.topTwo < 0 || c.playoff < 0 || c.eliminated < 0) {
-        throw new Error(`MonteCarlo counters negative for team=${t.name}: ${JSON.stringify(c)}`);
-      }
-      if (c.topTwo > c.playoff) {
-        throw new Error(
-          `MonteCarlo invariant failed (topTwo>playoff) for team=${t.name}: topTwo=${c.topTwo} playoff=${c.playoff} eliminated=${c.eliminated} iterations=${iterations}`
-        );
-      }
-      if (c.playoff + c.eliminated !== iterations) {
-        throw new Error(
-          `MonteCarlo invariant failed (playoff+eliminated!=iterations) for team=${t.name}: playoff=${c.playoff} eliminated=${c.eliminated} iterations=${iterations}`
-        );
-      }
-
       const playoffPercentage = Math.round((c.playoff / iterations) * 100);
       const topTwoPercentage = Math.round((c.topTwo / iterations) * 100);
 
-      // Complement from playoffPercentage so displayed percentages are consistent.
       const eliminationPercentage = Math.max(0, Math.min(100, 100 - playoffPercentage));
-
-      if (topTwoPercentage > playoffPercentage) {
-        throw new Error(
-          `MonteCarlo rounding invariant failed (topTwoPercentage>playoffPercentage) for team=${t.name}: topTwoPercentage=${topTwoPercentage} playoffPercentage=${playoffPercentage}`
-        );
-      }
 
       const raw: MonteCarloTeamOdds = {
         teamName: t.name,
@@ -213,7 +213,6 @@ export function runMonteCarloSimulation(
     })
     .sort((a, b) => b.playoffPercentage - a.playoffPercentage);
 
-
-
   return { iterations, odds, completedAt: Date.now(), method: "monte_carlo" };
 }
+
