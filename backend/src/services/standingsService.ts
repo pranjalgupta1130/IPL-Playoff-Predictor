@@ -85,24 +85,11 @@ function snapshotToRows(snapshot: Map<string, TeamSnapshot>): StandingsRow[] {
   return Array.from(snapshot.values());
 }
 
-/** Sort by points desc, then NRR desc; tie-break deterministically */
+/** Sort by points desc, then NRR desc */
 export function sortStandings(rows: StandingsRow[]): StandingsRow[] {
   const sorted = [...rows].sort((x, y) => {
     if (y.points !== x.points) return y.points - x.points;
-
-    // Normalize potential float noise / undefined values.
-    const xNrr = Number.isFinite(x.nrr) ? x.nrr : -Infinity;
-    const yNrr = Number.isFinite(y.nrr) ? y.nrr : -Infinity;
-
-    if (yNrr !== xNrr) return yNrr - xNrr;
-
-    // Deterministic final tie-break to prevent simulation ranking inversions.
-    // Using name then shortName keeps the order consistent across runs.
-    const xName = x.name ?? "";
-    const yName = y.name ?? "";
-    if (yName !== xName) return yName.localeCompare(xName);
-
-    return (y.shortName ?? "").localeCompare(x.shortName ?? "");
+    return y.nrr - x.nrr;
   });
 
   return sorted.map((row, index) => ({

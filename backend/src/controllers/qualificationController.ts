@@ -3,27 +3,24 @@ import { loadUniverseState } from "../services/universeService";
 import { calculateQualificationRequirements } from "../services/qualificationEngine";
 import { runMonteCarloSimulation } from "../services/simulation/monteCarloEngine";
 
-function runMonteCarloFromUniverse(
-  universe: Awaited<ReturnType<typeof loadUniverseState>>,
-  opts: { includeUserPredictions: boolean }
-) {
+function runMonteCarloFromUniverse(universe: Awaited<ReturnType<typeof loadUniverseState>>) {
   return runMonteCarloSimulation(
     universe.baseline.teams,
     universe.baseline.upcomingMatches,
-    opts.includeUserPredictions ? universe.simulation.predictions : [],
+    universe.simulation.predictions,
     universe.simulation.fullStandings,
     1000
   );
 }
 
-
 export async function getAllProbabilities(
-  _req: Request,
+  req: Request,
   res: Response
 ): Promise<void> {
   try {
-    const universe = await loadUniverseState();
-    const monteCarlo = runMonteCarloFromUniverse(universe, { includeUserPredictions: false });
+    const includeUserPredictions = req.query.includeUserPredictions === "true";
+    const universe = await loadUniverseState(includeUserPredictions);
+    const monteCarlo = runMonteCarloFromUniverse(universe);
     res.json({
       probabilities: monteCarlo.odds,
       monteCarlo,
@@ -44,12 +41,8 @@ export async function getTeamQualification(
     const teamName = Array.isArray(rawTeamName)
       ? decodeURIComponent(rawTeamName[0] ?? "")
       : decodeURIComponent(rawTeamName);
-    const universe = await loadUniverseState();
-
-    // OFFICIAL universe: qualification requirements must NOT be affected by user predictions.
-    // The derived `fullStandings` may include projected/movement data based on predictions,
-    // so we recompute requirements from an “official odds” Monte Carlo run that uses no predictions.
-    const officialMonteCarlo = runMonteCarloFromUniverse(universe, { includeUserPredictions: false });
+    const includeUserPredictions = req.query.includeUserPredictions === "true";
+    const universe = await loadUniverseState(includeUserPredictions);
 
     const requirements = calculateQualificationRequirements(
       teamName,
@@ -58,19 +51,18 @@ export async function getTeamQualification(
       universe.simulation.fullStandings
     );
 
-
     if (!requirements) {
       res.status(404).json({ message: "Team not found" });
       return;
     }
 
-    const probability = officialMonteCarlo.odds.find((p) => p.teamName === teamName);
-
+    const monteCarlo = runMonteCarloFromUniverse(universe);
+    const probability = monteCarlo.odds.find((p) => p.teamName === teamName);
 
     res.json({
       requirements,
       probability,
-      monteCarlo: officialMonteCarlo,
+      monteCarlo,
       standings: universe.simulation.fullStandings,
     });
   } catch (error) {
