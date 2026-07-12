@@ -16,7 +16,8 @@ const dev = process.env.NODE_ENV !== "production";
 const nextApp = next({ dev, dir: "./frontend" });
 const handle = nextApp.getRequestHandler();
 
-const PORT = 3000;
+const port = Number(process.env.PORT) || 3000;
+app.listen(port);
 const MONGODB_URI = process.env.MONGODB_URI || "";
 const CORS_ORIGIN = process.env.CORS_ORIGIN || "http://localhost:3000";
 

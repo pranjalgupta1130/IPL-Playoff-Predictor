@@ -163,9 +163,15 @@ export const useSimulatorStore = create<SimulatorState>()(
         };
 
         const withoutDup = prevPredictions.filter((p) => {
-          const id = typeof p.matchId === "string" ? p.matchId : p.matchId._id;
-          return id !== payload.matchId;
-        });
+  if (!p?.matchId) return false;
+
+  const id =
+    typeof p.matchId === "string"
+      ? p.matchId
+      : p.matchId?._id;
+
+  return id !== payload.matchId;
+});
 
         const next = [...withoutDup, optimistic];
 
@@ -207,10 +213,17 @@ export const useSimulatorStore = create<SimulatorState>()(
 
       clearPrediction: async (matchId) => {
         const prevPredictions = get().predictions;
+        
         const next = prevPredictions.filter((p) => {
-          const id = typeof p.matchId === "string" ? p.matchId : p.matchId._id;
-          return id !== matchId;
-        });
+  if (!p?.matchId) return false;
+
+  const id =
+    typeof p.matchId === "string"
+      ? p.matchId
+      : p.matchId?._id;
+
+  return id !== matchId;
+});
 
         set({ predictions: next, error: null });
         get().recalculateLocally(next);
