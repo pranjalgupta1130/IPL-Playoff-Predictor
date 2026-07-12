@@ -10,7 +10,6 @@ import universeRouter from "./routes/universe";
 import authRouter from "./routes/auth";
 
 
-
 dotenv.config();
 
 const app = express();
@@ -31,6 +30,7 @@ app.use("/api/predictions", predictionsRouter);
 app.use("/api/qualification", qualificationRouter);
 app.use("/api/universe", universeRouter);
 app.use("/api/auth", authRouter);
+
 
 async function start() {
   await connectDB(MONGODB_URI);

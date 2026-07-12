@@ -7,10 +7,7 @@ import { buildFullStandings } from "../services/standingsService";
 import { loadUniverseState } from "../services/universeService";
 
 async function loadStandingsPayload() {
-  // IMPORTANT: standings must be rebuilt from the derived Match-50 universe (51-70 upcoming fixtures)
-  // to stay consistent with the simulator architecture.
-  // Using Mongo's `completed` flag here can yield an incompatible upcoming set.
-  const universe = await loadUniverseState();
+  const universe = await loadUniverseState(true);
   return universe.simulation.fullStandings;
 }
 

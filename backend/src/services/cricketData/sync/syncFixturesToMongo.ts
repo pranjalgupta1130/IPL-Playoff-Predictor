@@ -22,26 +22,16 @@ async function upsertTeamsFromSeed(): Promise<void> {
  * - prevent self matches
  */
 export async function syncFixturesToMongo(): Promise<void> {
-  const mode = process.env.NODE_ENV || "development";
-  const isDev = mode !== "production";
-
-  // Provider availability gate (no synthetic fixtures, no silent fallback)
-  if (!process.env.SPORTMONKS_API_KEY) {
-    if (!isDev) {
-      throw new Error("SPORTMONKS_API_KEY missing in production: refusing to use synthetic fallback fixtures.");
-    }
-    await upsertTeamsFromSeed();
-    return;
-  }
-
   try {
+    // 1) Ensure canonical teams exist in DB
+    await upsertTeamsFromSeed();
 
     const provider = getCricketDataProvider();
 
-    // 1) Provider fetch + provider-specific normalization (still inside provider)
+    // 2) Provider fetch + provider-specific normalization (loads local ipl-2026.json)
     const providerFixtures = await provider.fetchFixtures();
 
-    // 2) Validate normalized fixtures BEFORE touching Mongo
+    // 3) Validate normalized fixtures BEFORE touching Mongo
     const { valid, summary } = validateAndSummarizeFixtures(
       providerFixtures as unknown as NormalizedFixture[],
       { maxFixtures: 2000 }
@@ -56,7 +46,7 @@ export async function syncFixturesToMongo(): Promise<void> {
       );
     }
 
-    // 3) Only after validation succeeds: replace MongoDB fixtures
+    // 4) Only after validation succeeds: replace MongoDB fixtures
     await Match.deleteMany({});
 
     const docs = valid.map((m) => {
@@ -81,12 +71,8 @@ export async function syncFixturesToMongo(): Promise<void> {
 
     await Match.insertMany(docs as any);
   } catch (e) {
-    if (isDev) {
-      // In dev, keep runtime stable by not corrupting DB.
-      console.error("[cricketData sync] failed; preserving existing MongoDB fixtures:", e);
-      await upsertTeamsFromSeed();
-      return;
-    }
+    console.error("[cricketData sync] failed; preserving existing MongoDB fixtures:", e);
+    await upsertTeamsFromSeed();
     throw e;
   }
 }

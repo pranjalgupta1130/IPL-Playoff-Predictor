@@ -1,4 +1,4 @@
-import { PLAYOFF_SPOTS} from "@/constants/tournament";
+import { PLAYOFF_SPOTS, POINTS_PER_WIN } from "@/constants/tournament";
 import type { Match, TeamBaseline } from "@/types";
 import { getMaximumPossiblePoints } from "@/utils/tournamentMath";
 
@@ -77,18 +77,6 @@ export function analyzeMathematicalElimination(
   const teamsWithHigherMaxPoints = maxPointsTable.filter(
     (r) => r.name !== team.name && r.max > maxPossiblePoints
   ).length;
-
-  // Eliminated if 4+ teams can strictly exceed T's ceiling on points (win-out table)
-  if (teamsWithHigherMaxPoints >= PLAYOFF_SPOTS) {
-    return {
-      eliminated: true,
-      reason: `${PLAYOFF_SPOTS}+ teams can finish above this team's best possible points total`,
-      maxPossiblePoints,
-      teamsAlreadyAheadOnPoints,
-      teamsWithHigherMaxPoints,
-      canReachTopFourOnMaxPoints: false,
-    };
-  }
 
   return {
     eliminated: false,

@@ -77,25 +77,31 @@ export function TeamQualificationDashboard() {
     selectedTeam,
     setSelectedTeam,
     monteCarloResult,
+    officialMonteCarloResult,
     monteCarloProgress,
     monteCarloRunning,
-    runMonteCarlo,
+    fetchAll,
   } = useSimulatorStore();
 
   useEffect(() => {
-    if (fullStandings && baseTeams.length && !monteCarloResult && !monteCarloRunning) {
-      void runMonteCarlo();
+    if (!officialMonteCarloResult && !monteCarloRunning) {
+      void fetchAll();
     }
-  }, [
-    fullStandings,
-    baseTeams.length,
-    monteCarloResult,
-    monteCarloRunning,
-    predictions.length,
-    runMonteCarlo,
-  ]);
+  }, [officialMonteCarloResult, monteCarloRunning, fetchAll]);
 
-  const probabilities = monteCarloResult?.odds ?? [];
+  const isProjected = tableView === "projected";
+
+  const activeMonteCarlo = useMemo(() => {
+    return isProjected ? (monteCarloResult || officialMonteCarloResult) : officialMonteCarloResult;
+  }, [isProjected, monteCarloResult, officialMonteCarloResult]);
+
+  const probabilities = useMemo(() => {
+    return activeMonteCarlo?.odds ?? [];
+  }, [activeMonteCarlo]);
+
+  const teamOdds = useMemo(() => {
+    return probabilities.find((p) => p.teamName === selectedTeam);
+  }, [probabilities, selectedTeam]);
 
   const requirements = useMemo(() => {
     if (!selectedTeam || !fullStandings) return null;
@@ -107,7 +113,6 @@ export function TeamQualificationDashboard() {
     );
     if (!req) return null;
     const team = baseTeams.find((t) => t.name === selectedTeam);
-    const teamOdds = monteCarloResult?.odds.find((p) => p.teamName === selectedTeam);
     if (team && teamOdds) {
       req.status = resolveQualificationStatus(
         team,
@@ -119,11 +124,8 @@ export function TeamQualificationDashboard() {
       req.summaries = generateQualificationSummary(req);
     }
     return req;
-  }, [selectedTeam, baseTeams, upcomingMatches, fullStandings, monteCarloResult]);
+  }, [selectedTeam, baseTeams, upcomingMatches, fullStandings, teamOdds]);
 
-  const teamOdds = probabilities.find((p) => p.teamName === selectedTeam);
-
-  const isProjected = tableView === "projected";
   const tableRows = fullStandings
     ? isProjected
       ? fullStandings.projectedWithMovement
@@ -144,7 +146,7 @@ export function TeamQualificationDashboard() {
             Playoff Probability Analytics
           </h1>
           <p className="max-w-2xl text-muted-foreground">
-            Monte Carlo simulation ({monteCarloResult?.iterations ?? 1000} seasons) with
+            Monte Carlo simulation ({officialMonteCarloResult?.iterations ?? 1000} seasons) with
             weighted match outcomes — not fixed heuristics.
           </p>
         </div>
@@ -169,7 +171,7 @@ export function TeamQualificationDashboard() {
           <Button
             variant="outline"
             size="sm"
-            onClick={() => runMonteCarlo()}
+            onClick={() => fetchAll()}
             disabled={monteCarloRunning}
             className="gap-1.5"
           >
@@ -315,7 +317,7 @@ export function TeamQualificationDashboard() {
                 <p>Max possible pts: {requirements.maximumPossiblePoints}</p>
                 <p>
                   Need {requirements.requiredWins} win(s) from {requirements.remainingMatches}{" "}
-                  left
+                  left{requirements.nrrPressure === "high" && " (with high margin)"}
                 </p>
                 <p>Gap to 4th: {requirements.pointsGapToFourth} pts</p>
               </CardContent>
@@ -358,8 +360,8 @@ export function TeamQualificationDashboard() {
         <CardHeader>
           <CardTitle>All teams — Monte Carlo playoff odds</CardTitle>
             <CardDescription>
-              {monteCarloResult
-                ? `${monteCarloResult.iterations.toLocaleString()} simulated seasons · weighted outcomes`
+              {officialMonteCarloResult
+                ? `${officialMonteCarloResult.iterations.toLocaleString()} simulated seasons · weighted outcomes`
                 : "Run simulation to generate odds"}
             </CardDescription>
         </CardHeader>
@@ -375,6 +377,11 @@ export function TeamQualificationDashboard() {
             >
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <div className="flex items-center gap-2">
+                  {p.playoffPercentage === 0 && (
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-red-400 bg-red-400/10 border border-red-500/20 px-1.5 py-0.5 rounded">
+                      Eliminated
+                    </span>
+                  )}
                   <span className="font-semibold">{p.shortName}</span>
                   <VolatilityBadge level={p.volatility} />
                 </div>

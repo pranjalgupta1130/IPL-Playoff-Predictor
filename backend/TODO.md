@@ -15,23 +15,23 @@
 4. Migrate active architecture entrypoints:
    - Update `backend/src/services/universeService.ts` to use new `syncFixturesToMongo`.
    - Update `backend/src/scripts/seed.ts` to use new `syncFixturesToMongo`.
-5. Remove CricAPI naming fully from active flow:
-   - Rename/migrate `services/cricapi/*` implementations into new structure.
-   - Update env var usage from `CRICAPI_*` to `SPORTMONKS_*`.
-   - Ensure no active runtime imports reference `services/cricapi/*`.
+5. Remove CricAPI naming fully from active flow (COMPLETED):
+   - Verified that `services/cricapi/*` implementations are completely removed.
+   - Verified that env var usage is updated from `CRICAPI_*` to `SPORTMONKS_*`.
+   - Verified that no active runtime imports reference `services/cricapi/*`.
 6. Validation:
    - `npm run build`
    - `npm run seed`
    - `npm run dev` (port conflict handled separately)
-7. Optional cleanup:
-   - Keep old cricapi folder only if TypeScript/build still references none.
+7. Cleanup verification (COMPLETED):
+   - CricAPI references have been completely removed.
 
 ## Progress Tracker
 - [ ] Step 1: Create new `services/cricketData` folder structure & files
 - [ ] Step 2: Implement Sportmonks provider client/types/normalization
 - [ ] Step 3: Implement provider-agnostic `syncFixturesToMongo`
 - [ ] Step 4: Update `universeService.ts` + `scripts/seed.ts`
-- [ ] Step 5: Fully migrate/remove CricAPI active flow references + env vars
+- [x] Step 5: Fully migrate/remove CricAPI active flow references + env vars (COMPLETED)
 - [ ] Step 6: Build & seed & dev validation
-- [ ] Step 7: Cleanup verification (no active `cricapi` imports)
+- [x] Step 7: Cleanup verification (no active `cricapi` imports) (COMPLETED)
 

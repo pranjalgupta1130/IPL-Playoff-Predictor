@@ -1,16 +1,12 @@
 import { Router } from "express";
-import { getMe, login, register } from "../controllers/authController";
-import { requireAuth } from "../middleware/authMiddleware";
+import { register, login, getMe, updateStats } from "../controllers/authController";
+import { authMiddleware } from "../utils/authMiddleware";
 
 const router = Router();
 
 router.post("/register", register);
 router.post("/login", login);
-
-// Milestone 2: protected profile endpoint
-router.get("/me", requireAuth, getMe);
+router.get("/me", authMiddleware as any, getMe as any);
+router.put("/stats", authMiddleware as any, updateStats as any);
 
 export default router;
-
-
-

@@ -1,9 +1,9 @@
-/** Dummy IPL 2026 data for MVP
+/** IPL 2026 seed data
  *
- * NOTE: This file is intentionally the only fixture/fixture-state input for the simulation.
- * Monte Carlo + mathematical elimination depend on:
- * - exact string match between Match.teamA/teamB and Team.name
- * - correct completed/upcoming flags
+ * This file is the authoritative input for matches and teams in the system.
+ * The first 50 matches are completed with their exact results as requested.
+ * The remaining 20 matches are upcoming (completed = false) for the simulation.
+ * The 4 playoff matches are ignored.
  */
 
 export const SEED_TEAMS = [
@@ -19,161 +19,861 @@ export const SEED_TEAMS = [
   { name: "Gujarat Titans", shortName: "GT", played: 10, wins: 4, losses: 6, points: 8, nrr: -0.320 },
 ];
 
-// League format assumption (MVP fixture state):
-// - 10 teams, double round-robin = 18 matches per team would be 90 fixtures; real IPL uses different format.
-// - For this app we need consistency for mathematical elimination:
-//   * total league fixtures must be exactly 70
-//   * each team must play exactly 14 league matches
-//
-// To satisfy those constraints while staying deterministic and simple,
-// we build a synthetic 70-match schedule: a round-robin that produces exactly
-// 14 matches per team.
-//
-// IMPORTANT: Monte Carlo + elimination use only the DB list; dates only order matches.
+const start = new Date("2026-03-28T14:00:00Z");
+const oneDayMs = 24 * 60 * 60 * 1000;
 
-const TEAM_NAMES = SEED_TEAMS.map((t) => t.name);
+export const SEED_MATCHES = [
+  // Completed Matches 1 - 50
+  {
+    matchNumber: 1,
+    fixtureId: "IPL2026-001",
+    stage: "league",
+    teamA: "Royal Challengers Bengaluru",
+    teamB: "Sunrisers Hyderabad",
+    venue: "M Chinnaswamy Stadium, Bengaluru",
+    date: new Date(start.getTime() + 0 * oneDayMs),
+    completed: true,
+    winner: "Royal Challengers Bengaluru",
+    margin: 6,
+    marginType: "wickets"
+  },
+  {
+    matchNumber: 2,
+    fixtureId: "IPL2026-002",
+    stage: "league",
+    teamA: "Mumbai Indians",
+    teamB: "Kolkata Knight Riders",
+    venue: "Wankhede Stadium, Mumbai",
+    date: new Date(start.getTime() + 1 * oneDayMs),
+    completed: true,
+    winner: "Mumbai Indians",
+    margin: 6,
+    marginType: "wickets"
+  },
+  {
+    matchNumber: 3,
+    fixtureId: "IPL2026-003",
+    stage: "league",
+    teamA: "Rajasthan Royals",
+    teamB: "Chennai Super Kings",
+    venue: "ACA Stadium, Guwahati",
+    date: new Date(start.getTime() + 2 * oneDayMs),
+    completed: true,
+    winner: "Rajasthan Royals",
+    margin: 8,
+    marginType: "wickets"
+  },
+  {
+    matchNumber: 4,
+    fixtureId: "IPL2026-004",
+    stage: "league",
+    teamA: "Punjab Kings",
+    teamB: "Gujarat Titans",
+    venue: "New International Cricket Stadium, New Chandigarh",
+    date: new Date(start.getTime() + 3 * oneDayMs),
+    completed: true,
+    winner: "Punjab Kings",
+    margin: 3,
+    marginType: "wickets"
+  },
+  {
+    matchNumber: 5,
+    fixtureId: "IPL2026-005",
+    stage: "league",
+    teamA: "Lucknow Super Giants",
+    teamB: "Delhi Capitals",
+    venue: "Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium, Lucknow",
+    date: new Date(start.getTime() + 4 * oneDayMs),
+    completed: true,
+    winner: "Delhi Capitals",
+    margin: 6,
+    marginType: "wickets"
+  },
+  {
+    matchNumber: 6,
+    fixtureId: "IPL2026-006",
+    stage: "league",
+    teamA: "Kolkata Knight Riders",
+    teamB: "Sunrisers Hyderabad",
+    venue: "Eden Gardens, Kolkata",
+    date: new Date(start.getTime() + 5 * oneDayMs),
+    completed: true,
+    winner: "Sunrisers Hyderabad",
+    margin: 65,
+    marginType: "runs"
+  },
+  {
+    matchNumber: 7,
+    fixtureId: "IPL2026-007",
+    stage: "league",
+    teamA: "Chennai Super Kings",
+    teamB: "Punjab Kings",
+    venue: "MA Chidambaram Stadium, Chennai",
+    date: new Date(start.getTime() + 6 * oneDayMs),
+    completed: true,
+    winner: "Punjab Kings",
+    margin: 5,
+    marginType: "wickets"
+  },
+  {
+    matchNumber: 8,
+    fixtureId: "IPL2026-008",
+    stage: "league",
+    teamA: "Delhi Capitals",
+    teamB: "Mumbai Indians",
+    venue: "Arun Jaitley Stadium, Delhi",
+    date: new Date(start.getTime() + 7 * oneDayMs),
+    completed: true,
+    winner: "Delhi Capitals",
+    margin: 6,
+    marginType: "wickets"
+  },
+  {
+    matchNumber: 9,
+    fixtureId: "IPL2026-009",
+    stage: "league",
+    teamA: "Gujarat Titans",
+    teamB: "Rajasthan Royals",
+    venue: "Narendra Modi Stadium, Ahmedabad",
+    date: new Date(start.getTime() + 8 * oneDayMs),
+    completed: true,
+    winner: "Rajasthan Royals",
+    margin: 6,
+    marginType: "runs"
+  },
+  {
+    matchNumber: 10,
+    fixtureId: "IPL2026-010",
+    stage: "league",
+    teamA: "Sunrisers Hyderabad",
+    teamB: "Lucknow Super Giants",
+    venue: "Rajiv Gandhi International Stadium, Hyderabad",
+    date: new Date(start.getTime() + 9 * oneDayMs),
+    completed: true,
+    winner: "Lucknow Super Giants",
+    margin: 5,
+    marginType: "wickets"
+  },
+  {
+    matchNumber: 11,
+    fixtureId: "IPL2026-011",
+    stage: "league",
+    teamA: "Royal Challengers Bengaluru",
+    teamB: "Chennai Super Kings",
+    venue: "M Chinnaswamy Stadium, Bengaluru",
+    date: new Date(start.getTime() + 10 * oneDayMs),
+    completed: true,
+    winner: "Royal Challengers Bengaluru",
+    margin: 43,
+    marginType: "runs"
+  },
+  {
+    matchNumber: 12,
+    fixtureId: "IPL2026-012",
+    stage: "league",
+    teamA: "Kolkata Knight Riders",
+    teamB: "Punjab Kings",
+    venue: "Eden Gardens, Kolkata",
+    date: new Date(start.getTime() + 11 * oneDayMs),
+    completed: true,
+    winner: undefined,
+    margin: undefined,
+    marginType: undefined
+  },
+  {
+    matchNumber: 13,
+    fixtureId: "IPL2026-013",
+    stage: "league",
+    teamA: "Rajasthan Royals",
+    teamB: "Mumbai Indians",
+    venue: "ACA Stadium, Guwahati",
+    date: new Date(start.getTime() + 12 * oneDayMs),
+    completed: true,
+    winner: "Rajasthan Royals",
+    margin: 27,
+    marginType: "runs"
+  },
+  {
+    matchNumber: 14,
+    fixtureId: "IPL2026-014",
+    stage: "league",
+    teamA: "Delhi Capitals",
+    teamB: "Gujarat Titans",
+    venue: "Arun Jaitley Stadium, Delhi",
+    date: new Date(start.getTime() + 13 * oneDayMs),
+    completed: true,
+    winner: "Gujarat Titans",
+    margin: 1,
+    marginType: "runs"
+  },
+  {
+    matchNumber: 15,
+    fixtureId: "IPL2026-015",
+    stage: "league",
+    teamA: "Kolkata Knight Riders",
+    teamB: "Lucknow Super Giants",
+    venue: "Eden Gardens, Kolkata",
+    date: new Date(start.getTime() + 14 * oneDayMs),
+    completed: true,
+    winner: "Lucknow Super Giants",
+    margin: 3,
+    marginType: "wickets"
+  },
+  {
+    matchNumber: 16,
+    fixtureId: "IPL2026-016",
+    stage: "league",
+    teamA: "Rajasthan Royals",
+    teamB: "Royal Challengers Bengaluru",
+    venue: "ACA Stadium, Guwahati",
+    date: new Date(start.getTime() + 15 * oneDayMs),
+    completed: true,
+    winner: "Rajasthan Royals",
+    margin: 6,
+    marginType: "wickets"
+  },
+  {
+    matchNumber: 17,
+    fixtureId: "IPL2026-017",
+    stage: "league",
+    teamA: "Punjab Kings",
+    teamB: "Sunrisers Hyderabad",
+    venue: "New International Cricket Stadium, New Chandigarh",
+    date: new Date(start.getTime() + 16 * oneDayMs),
+    completed: true,
+    winner: "Punjab Kings",
+    margin: 6,
+    marginType: "wickets"
+  },
+  {
+    matchNumber: 18,
+    fixtureId: "IPL2026-018",
+    stage: "league",
+    teamA: "Chennai Super Kings",
+    teamB: "Delhi Capitals",
+    venue: "MA Chidambaram Stadium, Chennai",
+    date: new Date(start.getTime() + 17 * oneDayMs),
+    completed: true,
+    winner: "Chennai Super Kings",
+    margin: 23,
+    marginType: "runs"
+  },
+  {
+    matchNumber: 19,
+    fixtureId: "IPL2026-019",
+    stage: "league",
+    teamA: "Lucknow Super Giants",
+    teamB: "Gujarat Titans",
+    venue: "Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium, Lucknow",
+    date: new Date(start.getTime() + 18 * oneDayMs),
+    completed: true,
+    winner: "Gujarat Titans",
+    margin: 7,
+    marginType: "wickets"
+  },
+  {
+    matchNumber: 20,
+    fixtureId: "IPL2026-020",
+    stage: "league",
+    teamA: "Mumbai Indians",
+    teamB: "Royal Challengers Bengaluru",
+    venue: "Wankhede Stadium, Mumbai",
+    date: new Date(start.getTime() + 19 * oneDayMs),
+    completed: true,
+    winner: "Royal Challengers Bengaluru",
+    margin: 18,
+    marginType: "runs"
+  },
+  {
+    matchNumber: 21,
+    fixtureId: "IPL2026-021",
+    stage: "league",
+    teamA: "Sunrisers Hyderabad",
+    teamB: "Rajasthan Royals",
+    venue: "Rajiv Gandhi International Stadium, Hyderabad",
+    date: new Date(start.getTime() + 20 * oneDayMs),
+    completed: true,
+    winner: "Sunrisers Hyderabad",
+    margin: 57,
+    marginType: "runs"
+  },
+  {
+    matchNumber: 22,
+    fixtureId: "IPL2026-022",
+    stage: "league",
+    teamA: "Chennai Super Kings",
+    teamB: "Kolkata Knight Riders",
+    venue: "MA Chidambaram Stadium, Chennai",
+    date: new Date(start.getTime() + 21 * oneDayMs),
+    completed: true,
+    winner: "Chennai Super Kings",
+    margin: 32,
+    marginType: "runs"
+  },
+  {
+    matchNumber: 23,
+    fixtureId: "IPL2026-023",
+    stage: "league",
+    teamA: "Royal Challengers Bengaluru",
+    teamB: "Lucknow Super Giants",
+    venue: "M Chinnaswamy Stadium, Bengaluru",
+    date: new Date(start.getTime() + 22 * oneDayMs),
+    completed: true,
+    winner: "Royal Challengers Bengaluru",
+    margin: 5,
+    marginType: "wickets"
+  },
+  {
+    matchNumber: 24,
+    fixtureId: "IPL2026-024",
+    stage: "league",
+    teamA: "Mumbai Indians",
+    teamB: "Punjab Kings",
+    venue: "Wankhede Stadium, Mumbai",
+    date: new Date(start.getTime() + 23 * oneDayMs),
+    completed: true,
+    winner: "Punjab Kings",
+    margin: 7,
+    marginType: "wickets"
+  },
+  {
+    matchNumber: 25,
+    fixtureId: "IPL2026-025",
+    stage: "league",
+    teamA: "Gujarat Titans",
+    teamB: "Kolkata Knight Riders",
+    venue: "Narendra Modi Stadium, Ahmedabad",
+    date: new Date(start.getTime() + 24 * oneDayMs),
+    completed: true,
+    winner: "Gujarat Titans",
+    margin: 5,
+    marginType: "wickets"
+  },
+  {
+    matchNumber: 26,
+    fixtureId: "IPL2026-026",
+    stage: "league",
+    teamA: "Royal Challengers Bengaluru",
+    teamB: "Delhi Capitals",
+    venue: "M Chinnaswamy Stadium, Bengaluru",
+    date: new Date(start.getTime() + 25 * oneDayMs),
+    completed: true,
+    winner: "Delhi Capitals",
+    margin: 6,
+    marginType: "wickets"
+  },
+  {
+    matchNumber: 27,
+    fixtureId: "IPL2026-027",
+    stage: "league",
+    teamA: "Sunrisers Hyderabad",
+    teamB: "Chennai Super Kings",
+    venue: "Rajiv Gandhi International Stadium, Hyderabad",
+    date: new Date(start.getTime() + 26 * oneDayMs),
+    completed: true,
+    winner: "Sunrisers Hyderabad",
+    margin: 10,
+    marginType: "runs"
+  },
+  {
+    matchNumber: 28,
+    fixtureId: "IPL2026-028",
+    stage: "league",
+    teamA: "Kolkata Knight Riders",
+    teamB: "Rajasthan Royals",
+    venue: "Eden Gardens, Kolkata",
+    date: new Date(start.getTime() + 27 * oneDayMs),
+    completed: true,
+    winner: "Kolkata Knight Riders",
+    margin: 4,
+    marginType: "wickets"
+  },
+  {
+    matchNumber: 29,
+    fixtureId: "IPL2026-029",
+    stage: "league",
+    teamA: "Punjab Kings",
+    teamB: "Lucknow Super Giants",
+    venue: "New International Cricket Stadium, New Chandigarh",
+    date: new Date(start.getTime() + 28 * oneDayMs),
+    completed: true,
+    winner: "Punjab Kings",
+    margin: 54,
+    marginType: "runs"
+  },
+  {
+    matchNumber: 30,
+    fixtureId: "IPL2026-030",
+    stage: "league",
+    teamA: "Gujarat Titans",
+    teamB: "Mumbai Indians",
+    venue: "Narendra Modi Stadium, Ahmedabad",
+    date: new Date(start.getTime() + 29 * oneDayMs),
+    completed: true,
+    winner: "Mumbai Indians",
+    margin: 99,
+    marginType: "runs"
+  },
+  {
+    matchNumber: 31,
+    fixtureId: "IPL2026-031",
+    stage: "league",
+    teamA: "Sunrisers Hyderabad",
+    teamB: "Delhi Capitals",
+    venue: "Rajiv Gandhi International Stadium, Hyderabad",
+    date: new Date(start.getTime() + 30 * oneDayMs),
+    completed: true,
+    winner: "Sunrisers Hyderabad",
+    margin: 47,
+    marginType: "runs"
+  },
+  {
+    matchNumber: 32,
+    fixtureId: "IPL2026-032",
+    stage: "league",
+    teamA: "Lucknow Super Giants",
+    teamB: "Rajasthan Royals",
+    venue: "Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium, Lucknow",
+    date: new Date(start.getTime() + 31 * oneDayMs),
+    completed: true,
+    winner: "Rajasthan Royals",
+    margin: 40,
+    marginType: "runs"
+  },
+  {
+    matchNumber: 33,
+    fixtureId: "IPL2026-033",
+    stage: "league",
+    teamA: "Mumbai Indians",
+    teamB: "Chennai Super Kings",
+    venue: "Wankhede Stadium, Mumbai",
+    date: new Date(start.getTime() + 32 * oneDayMs),
+    completed: true,
+    winner: "Chennai Super Kings",
+    margin: 103,
+    marginType: "runs"
+  },
+  {
+    matchNumber: 34,
+    fixtureId: "IPL2026-034",
+    stage: "league",
+    teamA: "Royal Challengers Bengaluru",
+    teamB: "Gujarat Titans",
+    venue: "M Chinnaswamy Stadium, Bengaluru",
+    date: new Date(start.getTime() + 33 * oneDayMs),
+    completed: true,
+    winner: "Royal Challengers Bengaluru",
+    margin: 5,
+    marginType: "wickets"
+  },
+  {
+    matchNumber: 35,
+    fixtureId: "IPL2026-035",
+    stage: "league",
+    teamA: "Delhi Capitals",
+    teamB: "Punjab Kings",
+    venue: "Arun Jaitley Stadium, Delhi",
+    date: new Date(start.getTime() + 34 * oneDayMs),
+    completed: true,
+    winner: "Punjab Kings",
+    margin: 6,
+    marginType: "wickets"
+  },
+  {
+    matchNumber: 36,
+    fixtureId: "IPL2026-036",
+    stage: "league",
+    teamA: "Rajasthan Royals",
+    teamB: "Sunrisers Hyderabad",
+    venue: "Sawai Mansingh Stadium, Jaipur",
+    date: new Date(start.getTime() + 35 * oneDayMs),
+    completed: true,
+    winner: "Sunrisers Hyderabad",
+    margin: 5,
+    marginType: "wickets"
+  },
+  {
+    matchNumber: 37,
+    fixtureId: "IPL2026-037",
+    stage: "league",
+    teamA: "Chennai Super Kings",
+    teamB: "Gujarat Titans",
+    venue: "MA Chidambaram Stadium, Chennai",
+    date: new Date(start.getTime() + 36 * oneDayMs),
+    completed: true,
+    winner: "Gujarat Titans",
+    margin: 8,
+    marginType: "wickets"
+  },
+  {
+    matchNumber: 38,
+    fixtureId: "IPL2026-038",
+    stage: "league",
+    teamA: "Lucknow Super Giants",
+    teamB: "Kolkata Knight Riders",
+    venue: "Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium, Lucknow",
+    date: new Date(start.getTime() + 37 * oneDayMs),
+    completed: true,
+    winner: "Kolkata Knight Riders",
+    margin: undefined,
+    marginType: undefined
+  },
+  {
+    matchNumber: 39,
+    fixtureId: "IPL2026-039",
+    stage: "league",
+    teamA: "Delhi Capitals",
+    teamB: "Royal Challengers Bengaluru",
+    venue: "Arun Jaitley Stadium, Delhi",
+    date: new Date(start.getTime() + 38 * oneDayMs),
+    completed: true,
+    winner: "Royal Challengers Bengaluru",
+    margin: 9,
+    marginType: "wickets"
+  },
+  {
+    matchNumber: 40,
+    fixtureId: "IPL2026-040",
+    stage: "league",
+    teamA: "Punjab Kings",
+    teamB: "Rajasthan Royals",
+    venue: "New International Cricket Stadium, New Chandigarh",
+    date: new Date(start.getTime() + 39 * oneDayMs),
+    completed: true,
+    winner: "Rajasthan Royals",
+    margin: 6,
+    marginType: "wickets"
+  },
+  {
+    matchNumber: 41,
+    fixtureId: "IPL2026-041",
+    stage: "league",
+    teamA: "Mumbai Indians",
+    teamB: "Sunrisers Hyderabad",
+    venue: "Wankhede Stadium, Mumbai",
+    date: new Date(start.getTime() + 40 * oneDayMs),
+    completed: true,
+    winner: "Sunrisers Hyderabad",
+    margin: 6,
+    marginType: "wickets"
+  },
+  {
+    matchNumber: 42,
+    fixtureId: "IPL2026-042",
+    stage: "league",
+    teamA: "Gujarat Titans",
+    teamB: "Royal Challengers Bengaluru",
+    venue: "Narendra Modi Stadium, Ahmedabad",
+    date: new Date(start.getTime() + 41 * oneDayMs),
+    completed: true,
+    winner: "Gujarat Titans",
+    margin: 4,
+    marginType: "wickets"
+  },
+  {
+    matchNumber: 43,
+    fixtureId: "IPL2026-043",
+    stage: "league",
+    teamA: "Rajasthan Royals",
+    teamB: "Delhi Capitals",
+    venue: "Sawai Mansingh Stadium, Jaipur",
+    date: new Date(start.getTime() + 42 * oneDayMs),
+    completed: true,
+    winner: "Delhi Capitals",
+    margin: 7,
+    marginType: "wickets"
+  },
+  {
+    matchNumber: 44,
+    fixtureId: "IPL2026-044",
+    stage: "league",
+    teamA: "Chennai Super Kings",
+    teamB: "Mumbai Indians",
+    venue: "MA Chidambaram Stadium, Chennai",
+    date: new Date(start.getTime() + 43 * oneDayMs),
+    completed: true,
+    winner: "Chennai Super Kings",
+    margin: 8,
+    marginType: "wickets"
+  },
+  {
+    matchNumber: 45,
+    fixtureId: "IPL2026-045",
+    stage: "league",
+    teamA: "Sunrisers Hyderabad",
+    teamB: "Kolkata Knight Riders",
+    venue: "Rajiv Gandhi International Stadium, Hyderabad",
+    date: new Date(start.getTime() + 44 * oneDayMs),
+    completed: true,
+    winner: "Kolkata Knight Riders",
+    margin: 7,
+    marginType: "wickets"
+  },
+  {
+    matchNumber: 46,
+    fixtureId: "IPL2026-046",
+    stage: "league",
+    teamA: "Gujarat Titans",
+    teamB: "Punjab Kings",
+    venue: "Narendra Modi Stadium, Ahmedabad",
+    date: new Date(start.getTime() + 45 * oneDayMs),
+    completed: true,
+    winner: "Gujarat Titans",
+    margin: 4,
+    marginType: "wickets"
+  },
+  {
+    matchNumber: 47,
+    fixtureId: "IPL2026-047",
+    stage: "league",
+    teamA: "Mumbai Indians",
+    teamB: "Lucknow Super Giants",
+    venue: "Wankhede Stadium, Mumbai",
+    date: new Date(start.getTime() + 46 * oneDayMs),
+    completed: true,
+    winner: "Mumbai Indians",
+    margin: 6,
+    marginType: "wickets"
+  },
+  {
+    matchNumber: 48,
+    fixtureId: "IPL2026-048",
+    stage: "league",
+    teamA: "Delhi Capitals",
+    teamB: "Chennai Super Kings",
+    venue: "Arun Jaitley Stadium, Delhi",
+    date: new Date(start.getTime() + 47 * oneDayMs),
+    completed: true,
+    winner: "Chennai Super Kings",
+    margin: 8,
+    marginType: "wickets"
+  },
+  {
+    matchNumber: 49,
+    fixtureId: "IPL2026-049",
+    stage: "league",
+    teamA: "Sunrisers Hyderabad",
+    teamB: "Punjab Kings",
+    venue: "Rajiv Gandhi International Stadium, Hyderabad",
+    date: new Date(start.getTime() + 48 * oneDayMs),
+    completed: true,
+    winner: "Sunrisers Hyderabad",
+    margin: 33,
+    marginType: "runs"
+  },
+  {
+    matchNumber: 50,
+    fixtureId: "IPL2026-050",
+    stage: "league",
+    teamA: "Lucknow Super Giants",
+    teamB: "Royal Challengers Bengaluru",
+    venue: "Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium, Lucknow",
+    date: new Date(start.getTime() + 49 * oneDayMs),
+    completed: true,
+    winner: "Lucknow Super Giants",
+    margin: 9,
+    marginType: "runs"
+  },
 
-function i(n: number) {
-  return TEAM_NAMES[n];
-}
-
-// 70 matches, each team appears exactly 14 times.
-// For local/dev fallback only (CricAPI is the real baseline).
-export const SEED_MATCHES = (() => {
-  const venues = [
-    "M. Chinnaswamy Stadium",
-    "MA Chidambaram Stadium",
-    "Wankhede Stadium",
-    "Eden Gardens",
-    "Sawai Mansingh Stadium",
-    "Rajiv Gandhi Stadium",
-    "Arun Jaitley Stadium",
-    "BRSABV Ekana Stadium",
-    "Narendra Modi Stadium",
-    "Punjab Cricket Association IS Bindra Stadium",
-  ];
-
-  // Simple deterministic fallback schedule:
-  // - Build a base set of 45 pairs via a circle method (9 rounds, 5 matches per round)
-  // - Then add 25 more matches by cycling through opponent pairs so each team reaches 14 appearances
-  //   (counts enforced by the validation below; no complex balancing).
-
-  const nTeams = TEAM_NAMES.length; // 10
-  const target = 14;
-
-  const teams = Array.from({ length: nTeams }, (_, idx) => idx);
-
-  function ringRoundPairs(roundIndex: number): Array<[number, number]> {
-    const fixed = teams[0];
-    const rest = teams.slice(1);
-    const rot = roundIndex % rest.length;
-    const rotated = rest.slice(rot).concat(rest.slice(0, rot));
-
-    const out: Array<[number, number]> = [];
-    out.push([fixed, rotated[rotated.length - 1]]);
-    for (let i2 = 0; i2 < rotated.length / 2; i2++) {
-      out.push([rotated[i2], rotated[rotated.length - 1 - i2]]);
-    }
-    return out;
+  // Upcoming Matches 51 - 70 (completed = false)
+  {
+    matchNumber: 51,
+    fixtureId: "IPL2026-051",
+    stage: "league",
+    teamA: "Delhi Capitals",
+    teamB: "Kolkata Knight Riders",
+    venue: "Arun Jaitley Stadium, Delhi",
+    date: new Date(start.getTime() + 50 * oneDayMs),
+    completed: false
+  },
+  {
+    matchNumber: 52,
+    fixtureId: "IPL2026-052",
+    stage: "league",
+    teamA: "Rajasthan Royals",
+    teamB: "Gujarat Titans",
+    venue: "Sawai Mansingh Stadium, Jaipur",
+    date: new Date(start.getTime() + 51 * oneDayMs),
+    completed: false
+  },
+  {
+    matchNumber: 53,
+    fixtureId: "IPL2026-053",
+    stage: "league",
+    teamA: "Chennai Super Kings",
+    teamB: "Lucknow Super Giants",
+    venue: "MA Chidambaram Stadium, Chennai",
+    date: new Date(start.getTime() + 52 * oneDayMs),
+    completed: false
+  },
+  {
+    matchNumber: 54,
+    fixtureId: "IPL2026-054",
+    stage: "league",
+    teamA: "Royal Challengers Bengaluru",
+    teamB: "Mumbai Indians",
+    venue: "Shaheed Veer Narayan Singh International Cricket Stadium, Raipur",
+    date: new Date(start.getTime() + 53 * oneDayMs),
+    completed: false
+  },
+  {
+    matchNumber: 55,
+    fixtureId: "IPL2026-055",
+    stage: "league",
+    teamA: "Punjab Kings",
+    teamB: "Delhi Capitals",
+    venue: "Himachal Pradesh Cricket Association Stadium, Dharamshala",
+    date: new Date(start.getTime() + 54 * oneDayMs),
+    completed: false
+  },
+  {
+    matchNumber: 56,
+    fixtureId: "IPL2026-056",
+    stage: "league",
+    teamA: "Gujarat Titans",
+    teamB: "Sunrisers Hyderabad",
+    venue: "Narendra Modi Stadium, Ahmedabad",
+    date: new Date(start.getTime() + 55 * oneDayMs),
+    completed: false
+  },
+  {
+    matchNumber: 57,
+    fixtureId: "IPL2026-057",
+    stage: "league",
+    teamA: "Royal Challengers Bengaluru",
+    teamB: "Kolkata Knight Riders",
+    venue: "Shaheed Veer Narayan Singh International Cricket Stadium, Raipur",
+    date: new Date(start.getTime() + 56 * oneDayMs),
+    completed: false
+  },
+  {
+    matchNumber: 58,
+    fixtureId: "IPL2026-058",
+    stage: "league",
+    teamA: "Punjab Kings",
+    teamB: "Mumbai Indians",
+    venue: "Himachal Pradesh Cricket Association Stadium, Dharamshala",
+    date: new Date(start.getTime() + 57 * oneDayMs),
+    completed: false
+  },
+  {
+    matchNumber: 59,
+    fixtureId: "IPL2026-059",
+    stage: "league",
+    teamA: "Lucknow Super Giants",
+    teamB: "Chennai Super Kings",
+    venue: "Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium, Lucknow",
+    date: new Date(start.getTime() + 58 * oneDayMs),
+    completed: false
+  },
+  {
+    matchNumber: 60,
+    fixtureId: "IPL2026-060",
+    stage: "league",
+    teamA: "Kolkata Knight Riders",
+    teamB: "Gujarat Titans",
+    venue: "Eden Gardens, Kolkata",
+    date: new Date(start.getTime() + 59 * oneDayMs),
+    completed: false
+  },
+  {
+    matchNumber: 61,
+    fixtureId: "IPL2026-061",
+    stage: "league",
+    teamA: "Punjab Kings",
+    teamB: "Royal Challengers Bengaluru",
+    venue: "Himachal Pradesh Cricket Association Stadium, Dharamshala",
+    date: new Date(start.getTime() + 60 * oneDayMs),
+    completed: false
+  },
+  {
+    matchNumber: 62,
+    fixtureId: "IPL2026-062",
+    stage: "league",
+    teamA: "Delhi Capitals",
+    teamB: "Rajasthan Royals",
+    venue: "Arun Jaitley Stadium, Delhi",
+    date: new Date(start.getTime() + 61 * oneDayMs),
+    completed: false
+  },
+  {
+    matchNumber: 63,
+    fixtureId: "IPL2026-063",
+    stage: "league",
+    teamA: "Chennai Super Kings",
+    teamB: "Sunrisers Hyderabad",
+    venue: "MA Chidambaram Stadium, Chennai",
+    date: new Date(start.getTime() + 62 * oneDayMs),
+    completed: false
+  },
+  {
+    matchNumber: 64,
+    fixtureId: "IPL2026-064",
+    stage: "league",
+    teamA: "Rajasthan Royals",
+    teamB: "Lucknow Super Giants",
+    venue: "Sawai Mansingh Stadium, Jaipur",
+    date: new Date(start.getTime() + 63 * oneDayMs),
+    completed: false
+  },
+  {
+    matchNumber: 65,
+    fixtureId: "IPL2026-065",
+    stage: "league",
+    teamA: "Kolkata Knight Riders",
+    teamB: "Mumbai Indians",
+    venue: "Eden Gardens, Kolkata",
+    date: new Date(start.getTime() + 64 * oneDayMs),
+    completed: false
+  },
+  {
+    matchNumber: 66,
+    fixtureId: "IPL2026-066",
+    stage: "league",
+    teamA: "Gujarat Titans",
+    teamB: "Chennai Super Kings",
+    venue: "Narendra Modi Stadium, Ahmedabad",
+    date: new Date(start.getTime() + 65 * oneDayMs),
+    completed: false
+  },
+  {
+    matchNumber: 67,
+    fixtureId: "IPL2026-067",
+    stage: "league",
+    teamA: "Sunrisers Hyderabad",
+    teamB: "Royal Challengers Bengaluru",
+    venue: "Rajiv Gandhi International Stadium, Hyderabad",
+    date: new Date(start.getTime() + 66 * oneDayMs),
+    completed: false
+  },
+  {
+    matchNumber: 68,
+    fixtureId: "IPL2026-068",
+    stage: "league",
+    teamA: "Lucknow Super Giants",
+    teamB: "Punjab Kings",
+    venue: "Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium, Lucknow",
+    date: new Date(start.getTime() + 67 * oneDayMs),
+    completed: false
+  },
+  {
+    matchNumber: 69,
+    fixtureId: "IPL2026-069",
+    stage: "league",
+    teamA: "Mumbai Indians",
+    teamB: "Rajasthan Royals",
+    venue: "Wankhede Stadium, Mumbai",
+    date: new Date(start.getTime() + 68 * oneDayMs),
+    completed: false
+  },
+  {
+    matchNumber: 70,
+    fixtureId: "IPL2026-070",
+    stage: "league",
+    teamA: "Kolkata Knight Riders",
+    teamB: "Delhi Capitals",
+    venue: "Eden Gardens, Kolkata",
+    date: new Date(start.getTime() + 69 * oneDayMs),
+    completed: false
   }
-
-  const baseRounds = nTeams - 1; // 9
-  const basePairs: Array<[number, number]> = [];
-  for (let r = 0; r < baseRounds; r++) basePairs.push(...ringRoundPairs(r));
-
-  const counts = new Array<number>(nTeams).fill(0);
-  for (const [a, b] of basePairs) {
-    counts[a]++;
-    counts[b]++;
-  }
-
-  const uniquePairs: Array<[number, number]> = [];
-  for (let a = 0; a < nTeams; a++) {
-    for (let b = a + 1; b < nTeams; b++) {
-      uniquePairs.push([a, b]);
-    }
-  }
-
-  const outPairs: Array<[number, number]> = [...basePairs];
-
-  // Add exactly enough extra matches so every team reaches 14.
-  // Each added match increases two teams' counts by 1.
-  const remainingNeeded = nTeams * (target - baseRounds); // appearances to add
-  const neededMatches = remainingNeeded / 2;
-
-  let idx = 0;
-  const maxAttempts = 200000;
-  while (outPairs.length < basePairs.length + neededMatches) {
-    const [u, v] = uniquePairs[idx % uniquePairs.length];
-    const a = outPairs.length % 2 === 0 ? u : v;
-    const b = outPairs.length % 2 === 0 ? v : u;
-
-    if (counts[a] < target && counts[b] < target) {
-      outPairs.push([a, b]);
-      counts[a]++;
-      counts[b]++;
-    }
-
-    idx++;
-    if (idx > maxAttempts) {
-      // If we cannot reach the target via this simple heuristic,
-      // stop and let the deterministic validation below fail loudly.
-      break;
-    }
-  }
-
-
-  if (outPairs.length !== 70) {
-    throw new Error(`Fallback synthetic schedule length mismatch: got ${outPairs.length}, expected 70`);
-  }
-
-  // Validate each team has exactly 14 appearances.
-  const countsByName = new Map<string, number>();
-  for (const name of TEAM_NAMES) countsByName.set(name, 0);
-  for (const [a, b] of outPairs) {
-    const A = i(a);
-    const B = i(b);
-    countsByName.set(A, (countsByName.get(A) ?? 0) + 1);
-    countsByName.set(B, (countsByName.get(B) ?? 0) + 1);
-  }
-  for (const name of TEAM_NAMES) {
-    const c = countsByName.get(name) ?? 0;
-    if (c !== 14) {
-      throw new Error(`Fallback synthetic schedule constraint violated: ${name} has ${c} matches, expected 14`);
-    }
-  }
-
-  const start = new Date("2026-04-01T00:00:00Z");
-  const oneDayMs = 24 * 60 * 60 * 1000;
-
-  return outPairs.map(([aIdx, bIdx], idx2) => {
-    const teamA = i(aIdx);
-    const teamB = i(bIdx);
-    const date = new Date(start.getTime() + idx2 * oneDayMs);
-    const completed = idx2 < 50;
-
-    let winner: string | undefined;
-    let margin: number | undefined;
-    let marginType: "defended_runs" | "chase_overs" | "balls_remaining" | "runs" | "wickets" | undefined;
-
-    if (completed) {
-      const pickA = idx2 % 2 === 0;
-      winner = pickA ? teamA : teamB;
-      marginType = idx2 % 3 === 0 ? "defended_runs" : idx2 % 3 === 1 ? "chase_overs" : "runs";
-      margin = 4 + (idx2 % 28);
-    }
-
-    return {
-      teamA,
-      teamB,
-      date,
-      venue: venues[idx2 % venues.length],
-      completed,
-      winner,
-      margin,
-      marginType: marginType as any,
-    };
-  });
-})();
-
-
+];

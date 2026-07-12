@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
 import { getTeamShortName } from "@/constants/teams";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -42,13 +41,22 @@ export function PredictionForm({
     String(existing?.chaseRuns ?? "")
   );
 
-
-
-
-
+  useEffect(() => {
+    if (existing) {
+      setWinner(existing.predictedWinner);
+      setResultType(
+        existing.marginType === "runs"
+          ? "defended_runs"
+          : existing.marginType === "wickets"
+            ? "balls_remaining"
+            : (existing.marginType as ResultType)
+      );
+      setMargin(String(existing.margin));
+      setChaseRuns(existing.chaseRuns ? String(existing.chaseRuns) : "");
+    }
+  }, [existing]);
 
   const isChase =
-
     resultType === "chase_overs" || resultType === "balls_remaining";
 
   const handleSubmit = async (e: React.FormEvent) => {

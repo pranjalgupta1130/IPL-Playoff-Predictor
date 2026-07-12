@@ -34,12 +34,14 @@ export function QualificationProbabilityBar({
   animated = true,
   variant = "playoff",
 }: QualificationProbabilityBarProps) {
+  const displayConfidence = percentage >= 70 ? "high" : percentage >= 30 ? "moderate" : "low";
+
   return (
     <div className="space-y-1.5">
       {showLabel && (
         <div className="flex items-center justify-between text-xs">
           <span className="text-muted-foreground">
-            {label} · <span className="capitalize">{confidence}</span>
+            {label} · <span className="capitalize">{displayConfidence}</span>
           </span>
           <span
             className={cn(

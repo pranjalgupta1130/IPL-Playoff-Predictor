@@ -59,6 +59,7 @@ export function validateOutcomeTotals(
 ): { valid: boolean; errors: string[] } {
   const errors: string[] = [];
   counters.forEach((c, name) => {
+    const total = c.playoff + c.eliminated;
     if (c.playoff + c.eliminated !== iterations) {
       errors.push(
         `${name}: playoff(${c.playoff}) + eliminated(${c.eliminated}) !== ${iterations}`

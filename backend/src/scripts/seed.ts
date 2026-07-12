@@ -17,12 +17,7 @@ async function seed() {
     Prediction.deleteMany({}),
   ]);
 
-  console.log("Running cricketData sync (provider agnostic)...");
-  // tsx can sometimes swallow/ignore env vars when launched from certain terminals.
-  // Provide a predictable behavior by trusting dotenv + process.env at runtime.
-  console.log("CRICKET_DATA_PROVIDER:", JSON.stringify(process.env.CRICKET_DATA_PROVIDER || ""));
-  console.log("SPORTMONKS_API_KEY present:", !!process.env.SPORTMONKS_API_KEY);
-
+  console.log("Running cricketData sync (using static ipl-2026.json dataset)...");
 
   const beforeCount = await Match.countDocuments({});
   await syncFixturesToMongo();
@@ -30,27 +25,6 @@ async function seed() {
   const inserted = Math.max(0, afterCount - beforeCount);
 
   console.log("Fetched/normalized fixtures into Mongo:", { beforeCount, afterCount, inserted });
-
-
-  // If Sportmonks is unavailable, seed.ts should still populate fixtures so app works in dev.
-  // For static provider runs we should not rely on synthetic fallback fixtures.
-  if (!process.env.SPORTMONKS_API_KEY && process.env.CRICKET_DATA_PROVIDER !== "static") {
-
-
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const { SEED_MATCHES, SEED_TEAMS } = require("../data/seedData");
-    // Ensure we insert only if sync didn't already upsert teams/matches.
-    const teamCount = await Team.countDocuments({});
-    const matchCount = await Match.countDocuments({});
-    if (teamCount === 0) {
-      await Team.insertMany(SEED_TEAMS);
-    }
-    if (matchCount === 0) {
-      await Match.insertMany(SEED_MATCHES);
-    }
-    const devCount = await Match.countDocuments({});
-    console.log("Dev fallback ensured synthetic fixtures:", { fixtures: devCount });
-  }
 
   console.log("Database seeded successfully");
   process.exit(0);

@@ -10,6 +10,7 @@ import type {
   TeamBaseline,
 } from "@/types";
 import { api } from "@/services/api";
+import { useAuthStore } from "./authStore";
 import { buildFullStandings } from "@/services/standingsEngine";
 import { clearMonteCarloCache } from "@/services/qualificationProbability";
 
@@ -22,6 +23,7 @@ interface SimulatorState {
   tableView: TableViewMode;
   selectedTeam: string;
   monteCarloResult: MonteCarloResult | null;
+  officialMonteCarloResult: MonteCarloResult | null;
   monteCarloProgress: number;
   monteCarloRunning: boolean;
   loading: boolean;
@@ -56,6 +58,7 @@ export const useSimulatorStore = create<SimulatorState>()(
       tableView: "real",
       selectedTeam: "Royal Challengers Bengaluru",
       monteCarloResult: null,
+      officialMonteCarloResult: null,
       monteCarloProgress: 0,
       monteCarloRunning: false,
       loading: false,
@@ -75,30 +78,24 @@ export const useSimulatorStore = create<SimulatorState>()(
       },
 
       runMonteCarlo: async () => {
-        const { baseTeams, upcomingMatches, predictions, fullStandings } = get();
-        if (!fullStandings || !baseTeams.length) return;
-
-        clearMonteCarloCache();
         set({ monteCarloRunning: true, monteCarloProgress: 0 });
 
-        const { calculateAllQualificationProbabilitiesAsync } = await import(
-          "@/services/qualificationProbability"
-        );
-
         try {
-          const result = await calculateAllQualificationProbabilitiesAsync(
-            baseTeams,
-            upcomingMatches,
-            predictions,
-            fullStandings,
-            (p) => set({ monteCarloProgress: p })
-          );
+          const res = await api.getQualification(true);
+          const result = res.data.monteCarlo;
+          
           set({
-            monteCarloResult: result,
+            monteCarloResult: result as any,
             monteCarloRunning: false,
             monteCarloProgress: 1,
           });
-        } catch {
+
+          // Sync total simulations count to database profile
+          const authState = useAuthStore.getState();
+          if (authState.isAuthenticated && authState.user) {
+            void authState.updateUserStats(authState.user.totalSimulationsCount + 1, undefined);
+          }
+        } catch (e: any) {
           set({ monteCarloRunning: false, error: "Monte Carlo simulation failed" });
         }
       },
@@ -106,26 +103,29 @@ export const useSimulatorStore = create<SimulatorState>()(
       fetchAll: async () => {
         set({ loading: true, error: null });
         try {
-          const [universeRes, qualRes, predictionsRes] = await Promise.all([
+          const [universeRes, qualRes, predictionsRes, completedRes, projectedRes] = await Promise.all([
             api.getUniverse(),
-            api.getQualification(),
+            api.getQualification(false),
             api.getPredictions(),
+            api.getCompletedMatches(),
+            api.getQualification(true),
           ]);
 
           const universe = universeRes.data;
           const qualification = qualRes.data;
+          const projected = projectedRes.data;
+          const completedMatches = completedRes.data;
 
           set({
             // Base teams are derived from backend-qualified standings to ensure Match-50 correctness
             baseTeams: qualification.standings.real.standings,
-            fullStandings: qualification.standings,
+            fullStandings: projected.standings,
 
             // Upcoming matches are authoritative from /api/universe
             upcomingMatches: universe.upcomingFixtures as unknown as Match[],
 
-
-            // Keep completedMatches empty here; Fixtures page remains legacy-driven
-            completedMatches: [],
+            // Fetch completed matches for Fixtures page
+            completedMatches,
 
             predictions: predictionsRes.data,
             selectedTeam:
@@ -135,20 +135,18 @@ export const useSimulatorStore = create<SimulatorState>()(
 
           // Use backend-provided probabilities (no local Monte Carlo as authoritative)
           set({
-            // Backend Monte Carlo result (probabilities/odds + metadata)
-            monteCarloResult: qualification.monteCarlo as MonteCarloResult,
-
+            // Backend Monte Carlo results
+            officialMonteCarloResult: qualification.monteCarlo as any,
+            monteCarloResult: projected.monteCarlo as any,
           });
-        } catch (e) {
-          const err = e as { message?: unknown };
+        } catch (e: any) {
           set({
             loading: false,
             error:
-              (typeof err.message === "string" ? err.message : null) ??
+              e?.message ||
               "Could not load data from /api/universe and /api/qualification. Is the backend running?",
           });
         }
-
       },
 
       savePrediction: async (payload) => {
@@ -183,25 +181,26 @@ export const useSimulatorStore = create<SimulatorState>()(
             error: null,
           });
           get().runMonteCarlo();
-        } catch (e) {
-          const err = e as {
-            response?: { status?: unknown; data?: { message?: unknown } };
-            message?: unknown;
-          };
-          const status = err.response?.status;
-          const message = err.response?.data?.message;
 
+          // Sync saved simulations count to database profile
+          const authState = useAuthStore.getState();
+          if (authState.isAuthenticated && authState.user) {
+            void authState.updateUserStats(undefined, authState.user.savedSimulationsCount + 1);
+          }
+        } catch (e: any) {
+          const status = e?.response?.status;
+          const message = e?.response?.data?.message;
           set({
             predictions: prevPredictions,
             error:
-              (typeof message === "string" ? message : null) ||
+              message ||
               (typeof status === "number" ? `Request failed (status ${status})` : null) ||
-              (typeof err.message === "string" ? err.message : null) ||
+              (typeof e?.message === "string" ? e.message : null) ||
+              String(e) ||
               "Failed to save prediction",
           });
           get().recalculateLocally(prevPredictions);
         }
-
 
 
       },
@@ -258,6 +257,8 @@ export const useSimulatorStore = create<SimulatorState>()(
         predictions: state.predictions,
         tableView: state.tableView,
         selectedTeam: state.selectedTeam,
+        monteCarloResult: state.monteCarloResult,
+        officialMonteCarloResult: state.officialMonteCarloResult,
       }),
     }
   )

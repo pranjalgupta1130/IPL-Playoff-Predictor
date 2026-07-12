@@ -38,9 +38,9 @@ export function calculateMatchWinProbability(
 
   const total = strengthA + strengthB || 1;
   let probabilityA = strengthA / total;
-  const pointsGap = Math.abs(a.points - b.points);
-  if (pointsGap <= 2) probabilityA = 0.5 + (probabilityA - 0.5) * 0.55;
-  else if (pointsGap <= 4) probabilityA = 0.5 + (probabilityA - 0.5) * 0.72;
+
+  // Compress win probabilities to be closer to 50% for realistic sports simulation
+  probabilityA = 0.5 + (probabilityA - 0.5) * 0.32;
 
   probabilityA = Math.max(MIN_PROB, Math.min(MAX_PROB, probabilityA));
   return { probabilityA, probabilityB: 1 - probabilityA };

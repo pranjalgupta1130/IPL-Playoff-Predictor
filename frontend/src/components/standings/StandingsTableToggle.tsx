@@ -31,13 +31,11 @@ export function StandingsTableToggle({
       <button
         type="button"
         onClick={() => onChange("projected")}
-        disabled={!hasPredictions}
         className={cn(
           "rounded-md px-4 py-2 text-sm font-medium transition-all duration-200",
           mode === "projected"
             ? "bg-emerald-600 text-white shadow-sm"
-            : "text-muted-foreground hover:text-foreground",
-          !hasPredictions && "cursor-not-allowed opacity-50"
+            : "text-muted-foreground hover:text-foreground"
         )}
       >
         Projected Table

@@ -118,8 +118,9 @@ export function generateQualificationSummary(
   }
 
   if (remainingMatches > 0) {
+    const marginSuffix = nrrPressure === "high" ? " (with high margin)" : "";
     lines.push(
-      `${shortName} must win at least ${requiredWins} of remaining ${remainingMatches} match(es) to stay in contention.`
+      `${shortName} must win at least ${requiredWins} of remaining ${remainingMatches} match(es) to finish the league in the top 4${marginSuffix}.`
     );
   }
 
@@ -155,7 +156,15 @@ export function calculateQualificationRequirements(
   const fourth = fourthPlaceRow(projected);
   const remaining = getRemainingMatches(teamName, upcomingMatches);
   const maxPts = getMaximumPossiblePoints(team.points, remaining.length);
-  const gapToFourth = fourth.points - team.points;
+
+  // Calculate expected 4th place final points dynamically to see what's needed to finish in the top 4
+  const expectedPointsList = teams.map((t) => {
+    const rem = getRemainingMatches(t.name, upcomingMatches).length;
+    return t.points + rem * 1.0;
+  }).sort((a, b) => b - a);
+  const expectedFourthPoints = expectedPointsList[PLAYOFF_SPOTS - 1] || 14;
+
+  const gapToFourth = Math.max(0, expectedFourthPoints - team.points);
   const requiredWins = Math.min(
     remaining.length,
     Math.max(0, Math.ceil(gapToFourth / POINTS_PER_WIN))

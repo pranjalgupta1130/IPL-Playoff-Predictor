@@ -2,6 +2,7 @@
 
 import { StandingsPanel } from "@/components/standings/StandingsPanel";
 import { PredictionForm } from "@/components/simulator/PredictionForm";
+import { ProjectedProbabilitiesPanel } from "@/components/simulator/ProjectedProbabilitiesPanel";
 import { useSimulatorStore } from "@/store/simulatorStore";
 import type { Prediction } from "@/types";
 
@@ -67,6 +68,8 @@ export default function SimulatorPage() {
         description="Real baseline vs projected after your picks"
         showReset
       />
+
+      <ProjectedProbabilitiesPanel />
     </div>
   );
 }

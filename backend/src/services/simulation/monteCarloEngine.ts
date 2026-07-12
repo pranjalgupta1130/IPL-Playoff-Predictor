@@ -112,6 +112,26 @@ function simulateSeason(
   return sortStandings(rowsFromSnapshot(snapshot));
 }
 
+function generateMonteCarloInsight(odds: MonteCarloTeamOdds): string {
+  const { shortName, playoffPercentage, volatility, eliminationPercentage } = odds;
+  if (odds.mathematicallyEliminated) {
+    return `${shortName} is mathematically eliminated from the playoffs.`;
+  }
+  if (odds.mathematicallyQualified) {
+    return `${shortName} has mathematically qualified and locked in a playoff spot!`;
+  }
+  if (playoffPercentage >= 95) {
+    return `${shortName} qualification is nearly secured (${playoffPercentage}% playoff odds).`;
+  }
+  if (volatility === "high") {
+    return `${shortName} playoff odds are highly volatile — small result swings matter.`;
+  }
+  if (playoffPercentage < 15) {
+    return `${shortName} faces long elimination odds (${eliminationPercentage}%) in simulations.`;
+  }
+  return `${shortName}: ${playoffPercentage}% playoff · ${odds.topTwoPercentage}% top-2 · ${eliminationPercentage}% out.`;
+}
+
 function calibrate(
   raw: MonteCarloTeamOdds,
   team: ITeam,
@@ -125,7 +145,7 @@ function calibrate(
   const statusMap = analyzeMathematicalStatus(teams, upcoming, predictions);
   const status = statusMap.get(team.name)!;
 
-  return {
+  const calibrated = {
     ...raw,
     mathematicallyEliminated: status.mathematicallyEliminated,
     mathematicallyQualified: status.mathematicallyQualified,
@@ -133,8 +153,40 @@ function calibrate(
     // Keep `percentage` consistent with playoffPercentage as previously used.
     percentage: raw.playoffPercentage,
   };
+
+  calibrated.insight = generateMonteCarloInsight(calibrated);
+  return calibrated;
 }
 
+
+function resolveVolatility(playoffPct: number): VolatilityLevel {
+  if (playoffPct >= 88 || playoffPct <= 12) return "low";
+  if (playoffPct >= 28 && playoffPct <= 72) return "high";
+  return "medium";
+}
+
+function confidenceRange(playoffPct: number, iterations: number): {
+  low: number;
+  high: number;
+} {
+  const p = playoffPct / 100;
+  const se = Math.sqrt((p * (1 - p)) / iterations);
+  const margin = se * 1.96 * 100;
+  return {
+    low: Math.max(0, Math.round(playoffPct - margin)),
+    high: Math.min(100, Math.round(playoffPct + margin)),
+  };
+}
+
+function toConfidence(
+  playoffPct: number,
+  volatility: VolatilityLevel
+): "high" | "medium" | "low" {
+  if (volatility === "high") return "medium";
+  if (playoffPct >= 75 || playoffPct <= 20) return "high";
+  if (playoffPct >= 40) return "medium";
+  return "low";
+}
 
 export function runMonteCarloSimulation(
   teams: ITeam[],
@@ -194,6 +246,10 @@ export function runMonteCarloSimulation(
         );
       }
 
+      const volatility = resolveVolatility(playoffPercentage);
+      const range = confidenceRange(playoffPercentage, iterations);
+      const confidence = toConfidence(playoffPercentage, volatility);
+
       const raw: MonteCarloTeamOdds = {
         teamName: t.name,
         shortName: t.shortName || getTeamShortName(t.name),
@@ -201,9 +257,9 @@ export function runMonteCarloSimulation(
         topTwoPercentage,
         eliminationPercentage,
         percentage: 0,
-        volatility: "medium",
-        confidenceRange: { low: 0, high: 100 },
-        confidence: "medium",
+        volatility,
+        confidenceRange: range,
+        confidence,
         projectedQualified: !!projected.find((r) => r.name === t.name)?.qualified,
         rank: projected.find((r) => r.name === t.name)?.rank ?? 10,
         insight: "",

@@ -7,15 +7,34 @@ import type {
   TeamBaseline,
 } from "@/types";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
+const API_URL = `${process.env.NEXT_PUBLIC_API_URL}/api`;
+
+console.log("NEXT_PUBLIC_API_URL =", process.env.NEXT_PUBLIC_API_URL);
+console.log("API_URL =", API_URL);
 
 const client = axios.create({
   baseURL: API_URL,
   headers: { "Content-Type": "application/json" },
 });
 
+client.interceptors.request.use((config) => {
+  if (typeof window !== "undefined") {
+    const token = localStorage.getItem("ipl_predictor_token");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+  }
+  return config;
+});
+
 export const api = {
   health: () => client.get("/health"),
+
+  // Auth endpoints
+  login: (payload: any) => client.post("/auth/login", payload),
+  register: (payload: any) => client.post("/auth/register", payload),
+  getMe: () => client.get("/auth/me"),
+  updateStats: (payload: any) => client.put("/auth/stats", payload),
 
   getTeams: () => client.get<TeamBaseline[]>("/teams"),
 
@@ -46,49 +65,17 @@ export const api = {
   getUniverse: () =>
     client.get<import("@/types/universeApi").UniverseApiResponse>("/universe"),
 
-  getQualification: () =>
-    client.get<import("@/types/universeApi").QualificationApiResponse>("/qualification"),
+  getQualification: (includeUserPredictions?: boolean) =>
+    client.get<import("@/types/universeApi").QualificationApiResponse>("/qualification", {
+      params: includeUserPredictions !== undefined ? { includeUserPredictions } : undefined,
+    }),
 
-
-
-
-
-
-  getTeamQualification: (teamName: string) =>
+  getTeamQualification: (teamName: string, includeUserPredictions?: boolean) =>
     client.get<{
       requirements: import("@/types").QualificationRequirements;
       probability: import("@/types").QualificationProbability;
       standings: FullStandingsResult;
-    }>(`/qualification/team/${encodeURIComponent(teamName)}`),
-
-  registerUser: (payload: {
-    name: string;
-    email: string;
-    password: string;
-    confirmPassword: string;
-    favouriteTeam?: string;
-  }) =>
-    client.post<{
-      message: string;
-      user: { id: string; name: string; email: string; favouriteTeam?: string };
-    }>("/auth/register", payload),
-
-  loginUser: (payload: { email: string; password: string }) =>
-    client.post<{
-      message: string;
-      token: string;
-      user: { id: string; name: string; email: string; favouriteTeam?: string };
-    }>("/auth/login", payload),
-
-  getMe: () => {
-    const token = typeof window !== "undefined" ? localStorage.getItem("ipl_auth_token") : null;
-    return client.get<{
-      message: string;
-      user: { id: string; name: string; email: string; favouriteTeam?: string };
-    }>("/auth/me", {
-      headers: token ? { Authorization: `Bearer ${token}` } : {},
-    });
-  },
+    }>(`/qualification/team/${encodeURIComponent(teamName)}`, {
+      params: includeUserPredictions !== undefined ? { includeUserPredictions } : undefined,
+    }),
 };
-
-

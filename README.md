@@ -294,7 +294,6 @@ CORS_ORIGIN=http://localhost:3000
 These are referenced directly in source:
 - `CRICKET_DATA_PROVIDER` (required to select a cricket data provider; allowed values: `static` or `sportmonks`)
 - `SPORTMONKS_API_KEY`, `SPORTMONKS_BASE_URL`, `SPORTMONKS_IPL_LEAGUE_ID`, `SPORTMONKS_SEASON_ID` (Sportmonks provider)
-- `CRICAPI_KEY`, `CRICAPI_BASE_URL`, `CRICAPI_DEBUG` (CricAPI integration)
 
 > The application may refuse to run (or refuse synthetic fallback fixtures) depending on these variables, especially in non-development modes.
 
