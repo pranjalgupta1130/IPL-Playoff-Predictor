@@ -51,10 +51,20 @@ export interface MonteCarloInput {
 
 function buildPredictionMap(predictions: Prediction[]): Map<string, Prediction> {
   const map = new Map<string, Prediction>();
+
   for (const p of predictions) {
-    const id = typeof p.matchId === "string" ? p.matchId : p.matchId._id;
+    if (!p?.matchId) continue;
+
+    const id =
+      typeof p.matchId === "string"
+        ? p.matchId
+        : p.matchId?._id;
+
+    if (!id) continue;
+
     map.set(id, p);
   }
+
   return map;
 }
 

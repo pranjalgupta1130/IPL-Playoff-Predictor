@@ -123,9 +123,15 @@ export function removePrediction(
   matchIdToRemove: string
 ): StandingsBundle {
   const filtered = predictions.filter((p) => {
-    const id = typeof p.matchId === "string" ? p.matchId : p.matchId._id;
-    return id !== matchIdToRemove;
-  });
+  if (!p?.matchId) return false;
+
+  const id =
+    typeof p.matchId === "string"
+      ? p.matchId
+      : p.matchId?._id;
+
+  return id !== matchIdToRemove;
+});
   return calculateProjectedStandings(teams, upcomingMatches, filtered);
 }
 
@@ -136,11 +142,17 @@ export function calculateProjectedStandings(
 ): StandingsBundle {
   const snapshot = cloneTeams(teams);
   const byMatch = new Map(
-    predictions.map((p) => {
-      const id = typeof p.matchId === "string" ? p.matchId : p.matchId._id;
-      return [id, p];
+  predictions
+    .filter((p) => p?.matchId)
+    .map((p) => {
+      const id =
+        typeof p.matchId === "string"
+          ? p.matchId
+          : p.matchId?._id;
+
+      return [id, p] as const;
     })
-  );
+);
 
   for (const m of upcomingMatches) {
     const pred = byMatch.get(m._id);
