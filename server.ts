@@ -2,7 +2,9 @@ import dotenv from "dotenv";
 import express from "express";
 import next from "next";
 import cors from "cors";
+
 import { connectDB } from "./backend/src/config/db";
+
 import teamsRouter from "./backend/src/routes/teams";
 import matchesRouter from "./backend/src/routes/matches";
 import predictionsRouter from "./backend/src/routes/predictions";
@@ -13,53 +15,70 @@ import authRouter from "./backend/src/routes/auth";
 dotenv.config();
 
 const dev = process.env.NODE_ENV !== "production";
-const nextApp = next({ dev, dir: "./frontend" });
+
+const nextApp = next({
+  dev,
+  dir: "./frontend",
+});
+
 const handle = nextApp.getRequestHandler();
 
-const port = Number(process.env.PORT) || 3000;
-app.listen(port);
+const PORT = Number(process.env.PORT) || 3000;
 const MONGODB_URI = process.env.MONGODB_URI || "";
 const CORS_ORIGIN = process.env.CORS_ORIGIN || "http://localhost:3000";
 
 async function startServer() {
-  const app = express();
+  try {
+    // Connect Database
+    await connectDB(MONGODB_URI);
 
-  // Basic middleware
-  app.use(cors({ origin: CORS_ORIGIN }));
-  app.use(express.json());
+    // Create Express App
+    const app = express();
 
-  // API Health endpoint
-  app.get("/api/health", (_req, res) => {
-    res.json({ status: "ok", service: "ipl-playoff-predictor-api" });
-  });
+    // Middleware
+    app.use(
+      cors({
+        origin: CORS_ORIGIN,
+        credentials: true,
+      })
+    );
 
-  // API Routes
-  app.use("/api/teams", teamsRouter);
-  app.use("/api/matches", matchesRouter);
-  app.use("/api/predictions", predictionsRouter);
-  app.use("/api/qualification", qualificationRouter);
-  app.use("/api/universe", universeRouter);
-  app.use("/api/auth", authRouter);
+    app.use(express.json());
 
-  // Initialize Next.js
-  console.log("Preparing Next.js app...");
-  await nextApp.prepare();
-  console.log("Next.js app prepared.");
+    // Health Check
+    app.get("/api/health", (_req, res) => {
+      res.json({
+        status: "ok",
+        service: "ipl-playoff-predictor-api",
+      });
+    });
 
-  // Fallback route to serve Next.js pages
-  app.all("*", (req, res) => {
-    return handle(req, res);
-  });
+    // API Routes
+    app.use("/api/auth", authRouter);
+    app.use("/api/teams", teamsRouter);
+    app.use("/api/matches", matchesRouter);
+    app.use("/api/predictions", predictionsRouter);
+    app.use("/api/qualification", qualificationRouter);
+    app.use("/api/universe", universeRouter);
 
-  // Connect to DB (starts in-memory server if MONGODB_URI is empty)
-  await connectDB(MONGODB_URI);
+    // Prepare Next.js
+    console.log("Preparing Next.js...");
+    await nextApp.prepare();
+    console.log("Next.js Ready.");
 
-  app.listen(PORT, "0.0.0.0", () => {
-    console.log(`> App running on port ${PORT}`);
-  });
+    // Serve Frontend
+    app.all("*", (req, res) => {
+      return handle(req, res);
+    });
+
+    // Start Server
+    app.listen(PORT, "0.0.0.0", () => {
+      console.log(`🚀 Server running at http://localhost:${PORT}`);
+    });
+  } catch (err) {
+    console.error("Failed to start server:", err);
+    process.exit(1);
+  }
 }
 
-startServer().catch((err) => {
-  console.error("Failed to start server:", err);
-  process.exit(1);
-});
+startServer();
