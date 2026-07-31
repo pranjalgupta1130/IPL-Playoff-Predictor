@@ -11,6 +11,7 @@ import predictionsRouter from "./backend/src/routes/predictions";
 import qualificationRouter from "./backend/src/routes/qualification";
 import universeRouter from "./backend/src/routes/universe";
 import authRouter from "./backend/src/routes/auth";
+import simulationsRouter from "./backend/src/routes/simulations";
 
 dotenv.config();
 
@@ -60,6 +61,8 @@ async function startServer() {
     app.use("/api/predictions", predictionsRouter);
     app.use("/api/qualification", qualificationRouter);
     app.use("/api/universe", universeRouter);
+    app.use("/api/simulations", simulationsRouter);
+
 
     // Prepare Next.js
     console.log("Preparing Next.js...");

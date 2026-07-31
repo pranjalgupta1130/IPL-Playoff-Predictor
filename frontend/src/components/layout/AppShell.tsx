@@ -32,16 +32,21 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     }
   }, [isAuthenticated, fetchAll]);
 
+  const isPublicRoute =
+    pathname === "/login" ||
+    pathname.startsWith("/share") ||
+    pathname.startsWith("/simulation/share");
+
   // Route protection guard
   useEffect(() => {
     if (isInitialized) {
-      if (!isAuthenticated && pathname !== "/login") {
+      if (!isAuthenticated && !isPublicRoute) {
         router.push("/login");
       } else if (isAuthenticated && (pathname === "/login" || pathname === "/")) {
         router.push("/dashboard");
       }
     }
-  }, [isInitialized, isAuthenticated, pathname, router]);
+  }, [isInitialized, isAuthenticated, isPublicRoute, pathname, router]);
 
   // If auth is not initialized yet, show a clean loading spinner
   if (!isInitialized) {
@@ -57,7 +62,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background via-background to-emerald-950/15">
-      {isAuthenticated && <Navbar />}
+      <Navbar />
 
       {/* Auth user top-bar for dashboard if authenticated */}
       {isAuthenticated && user && (
@@ -88,7 +93,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       )}
 
       <main className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
-        {isAuthenticated || pathname === "/login" ? (
+        {isAuthenticated || isPublicRoute ? (
           children
         ) : (
           <div className="flex min-h-[50vh] items-center justify-center">
@@ -98,4 +103,5 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       </main>
     </div>
   );
+
 }

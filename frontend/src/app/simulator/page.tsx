@@ -3,6 +3,7 @@
 import { StandingsPanel } from "@/components/standings/StandingsPanel";
 import { PredictionForm } from "@/components/simulator/PredictionForm";
 import { ProjectedProbabilitiesPanel } from "@/components/simulator/ProjectedProbabilitiesPanel";
+import { SaveShareBar } from "@/components/simulator/SaveShareBar";
 import { useSimulatorStore } from "@/store/simulatorStore";
 import type { Prediction } from "@/types";
 
@@ -36,6 +37,9 @@ export default function SimulatorPage() {
           with no page refresh — then compare real vs projected tables.
         </p>
       </section>
+
+      <SaveShareBar />
+
 
       <div className="grid gap-4 lg:grid-cols-2">
         {upcomingMatches.map((match) => (

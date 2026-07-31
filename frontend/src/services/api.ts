@@ -78,4 +78,17 @@ export const api = {
     }>(`/qualification/team/${encodeURIComponent(teamName)}`, {
       params: includeUserPredictions !== undefined ? { includeUserPredictions } : undefined,
     }),
+
+  saveSimulation: (payload: {
+    predictions: any;
+    completedMatchesSnapshot: any;
+    generatedStandings: any;
+    qualificationResults?: any;
+    playoffProbabilities: any;
+    metadata?: any;
+  }) => client.post<{ shareId: string; shareUrl: string }>("/simulations/save", payload),
+
+  getSimulation: (shareId: string) =>
+    client.get<any>(`/simulations/${shareId}`),
 };
+
